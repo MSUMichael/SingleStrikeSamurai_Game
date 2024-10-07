@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         originalHeight = transform.localScale.y;
     }
 
-    void Update()
+    public void Update()
     {
         // Handle Crouching (Left Ctrl)
         if (Input.GetKeyDown(KeyCode.LeftControl))
