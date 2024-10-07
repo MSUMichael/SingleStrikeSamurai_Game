@@ -9,7 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         // Load the main game scene (make sure your scene is added to the build settings)
-        SceneManager.LoadScene("MovementTest");  // Replace "GameScene" with the actual name of your game scene
+        SceneManager.LoadScene("Level1");  // Replace "GameScene" with the actual name of your game scene
     }
 
     // Method for opening options (can later be used to load an options menu)
