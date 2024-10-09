@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 15f;
+    public float moveSpeed = 3f;
     public float jumpForce = 5f;
-    public float crouchSpeed = 5f;
+    public float crouchSpeed = 3f;
     public float crouchHeight = 0.5f;
     private float originalHeight;
     private bool isGrounded;
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     private void StandUp()
     {
         transform.localScale = new Vector3(transform.localScale.x, originalHeight, transform.localScale.z);
-        moveSpeed = 15f;  // Reset move speed after crouching
+        moveSpeed = 3f;  // Reset move speed after crouching
         isCrouching = false;
         //Debug.Log("Standing up");
     }
