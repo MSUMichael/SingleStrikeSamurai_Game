@@ -10,7 +10,7 @@ public class PlayerMovement2 : MonoBehaviour
     
     private float originalHeight;
     private bool isGrounded;
-    private bool isCrouching;
+    public bool isCrouching;
     private Rigidbody rb;
 
     // Reference to AnimationStateController
@@ -103,7 +103,7 @@ public class PlayerMovement2 : MonoBehaviour
     private void StandUp()
     {
         transform.localScale = new Vector3(transform.localScale.x, originalHeight, transform.localScale.z);
-        moveSpeed = 7.5f;
+        moveSpeed = 2;
         isCrouching = false;
         animController.SetCrouchingState(false);  // Reset crouching animation
     }
