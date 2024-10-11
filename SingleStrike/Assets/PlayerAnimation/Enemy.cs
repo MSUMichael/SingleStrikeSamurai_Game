@@ -278,6 +278,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    bool IsPlayerBehind(Transform playerTransform)
+    {
+        // Calculate direction to the player
+        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+
+        // Dot product to determine if the player is behind
+        float dotProduct = Vector3.Dot(transform.forward, directionToPlayer);
+
+        // If dotProduct is less than 0, the player is behind the enemy
+        bool isBehind = dotProduct < 0;
+
+        Debug.Log("Player is behind: " + isBehind);
+        return isBehind;
+    }
+
+
 }
 
 
