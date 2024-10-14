@@ -620,11 +620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406352b52006d41499afba903440edec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1105885483 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7035450296353555764, guid: 4e0b3da2843ff644ea2ba95deb123622, type: 3}
-  m_PrefabInstance: {fileID: 7251578023873723131}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1128827150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ba6cf27e84bbb6b4289b8055a61e55e3, type: 3}
@@ -939,7 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c76aca4e671cf45a4734703b216668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1105885483}
+  playerTransform: {fileID: 0}
   assassinationRange: 1.5
   assassinationAnimationName: SwordSlash
 --- !u!1001 &1812412757

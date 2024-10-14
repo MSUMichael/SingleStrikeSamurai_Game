@@ -103,7 +103,7 @@ public class PlayerMovement2 : MonoBehaviour
     private void StandUp()
     {
         transform.localScale = new Vector3(transform.localScale.x, originalHeight, transform.localScale.z);
-        moveSpeed = 2;
+        moveSpeed = 7.5f;
         isCrouching = false;
         animController.SetCrouchingState(false);  // Reset crouching animation
     }

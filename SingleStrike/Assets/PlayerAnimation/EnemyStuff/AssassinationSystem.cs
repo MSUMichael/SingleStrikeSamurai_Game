@@ -3,15 +3,10 @@ using UnityEngine;
 public class AssassinationSystem : MonoBehaviour
 {
     public Transform playerTransform;        // Player transform
-    public Transform enemyTransform;         // Enemy transform
-    public Enemy enemy;                      // Reference to the enemy script
     public float assassinationRange = 1.5f;  // Range for assassination
     public string assassinationAnimationName = "SwordSlash";  // Name of the assassination animation
 
-    private bool isPlayerInRange = false;
-    private bool isPlayerBehind = false;
     private bool assassinationTriggered = false;
-
     private Animator playerAnimator;
 
     void Start()
@@ -28,86 +23,133 @@ public class AssassinationSystem : MonoBehaviour
         {
             Debug.LogError("Animator component not found on player.");
         }
-
-        // Ensure enemyTransform is assigned
-        if (enemyTransform == null)
-        {
-            enemyTransform = GameObject.FindGameObjectWithTag("Enemy").transform;
-        }
-
-        // Assign the Enemy script from the enemyTransform
-        if (enemyTransform != null)
-        {
-            enemy = enemyTransform.GetComponent<Enemy>();
-        }
-
-        if (enemy == null)
-        {
-            Debug.LogError("Enemy script not found on the enemy object.");
-        }
     }
 
     void Update()
     {
-        DetectPlayerPosition();
-        CheckForAssassination();
+        DetectAndAssassinateEnemy();
     }
 
-    // Detect if the player is behind and close to the enemy
-    void DetectPlayerPosition()
+    void DetectAndAssassinateNearestEnemy()
     {
-        if (enemyTransform == null || playerTransform == null) return;
+        // Find all enemies tagged as "Enemy" in the scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        Vector3 directionToPlayer = (playerTransform.position - enemyTransform.position).normalized;
-        float dotProduct = Vector3.Dot(enemyTransform.forward, directionToPlayer);
-        isPlayerBehind = dotProduct < 0;
+        GameObject nearestEnemyObject = null;
+        float nearestDistance = Mathf.Infinity;  // Initialize with a very large value
 
-        float distanceToPlayer = Vector3.Distance(playerTransform.position, enemyTransform.position);
-        isPlayerInRange = distanceToPlayer < assassinationRange;
-    }
-
-    // Check if assassination conditions are met
-    void CheckForAssassination()
-    {
-        if (isPlayerInRange && isPlayerBehind && Input.GetKeyDown(KeyCode.X) && !assassinationTriggered)
+        // Loop through all enemies to find the nearest one
+        foreach (GameObject enemyObject in enemies)
         {
-            TriggerAssassination();
+            Enemy enemy = enemyObject.GetComponent<Enemy>();
+
+            // Skip null enemies or dead enemies
+            if (enemy == null || enemy.isDead) continue;
+
+            // Calculate the distance between player and this enemy
+            float distanceToPlayer = Vector3.Distance(playerTransform.position, enemyObject.transform.position);
+
+            // Check if this enemy is the nearest one so far
+            if (distanceToPlayer < nearestDistance)
+            {
+                nearestDistance = distanceToPlayer;  // Update nearest distance
+                nearestEnemyObject = enemyObject;    // Update nearest enemy object
+            }
         }
 
-        // If assassination animation is playing, trigger the enemy's death
-        if (assassinationTriggered && IsAssassinationAnimationPlaying())
+        // If a nearest enemy was found
+        if (nearestEnemyObject != null)
         {
-            if (enemy != null)
+            // Debug Log to show the nearest enemy and its distance
+            Debug.Log("Nearest enemy found: " + nearestEnemyObject.name + " at distance: " + nearestDistance);
+
+            Enemy nearestEnemy = nearestEnemyObject.GetComponent<Enemy>();
+            Transform enemyTransform = nearestEnemyObject.transform;
+
+            // Calculate the direction from enemy to player
+            Vector3 directionToPlayer = (playerTransform.position - enemyTransform.position).normalized;
+            // Calculate dot product to determine if the player is behind the enemy
+            float dotProduct = Vector3.Dot(enemyTransform.forward, directionToPlayer);
+            bool isPlayerBehind = dotProduct < 0;
+
+            // Check if the nearest enemy is within range and the player is behind the enemy
+            if (nearestDistance < assassinationRange && isPlayerBehind && Input.GetKeyDown(KeyCode.X) && !assassinationTriggered)
             {
-                enemy.Die();  // Trigger enemy death if assassination is playing
-            }
-            else
-            {
-                Debug.LogError("Enemy reference is null! Cannot call Die().");
+                TriggerAssassination(nearestEnemy);
             }
 
-            assassinationTriggered = false;  // Reset trigger to avoid multiple deaths
+            // If assassination is triggered and the animation is playing, trigger enemy death
+            if (assassinationTriggered && IsAssassinationAnimationPlaying())
+            {
+                nearestEnemy.Die();  // Kill the enemy
+                assassinationTriggered = false;  // Reset trigger for the next enemy
+            }
         }
     }
 
-    void TriggerAssassination()
-    {
-        Debug.Log("Assassination triggered!");
 
-        // Play assassination animation
-        playerAnimator.SetTrigger("SwordSlash");
+
+
+
+
+    // Detect enemies within range and behind the player, and check for assassination conditions
+    void DetectAndAssassinateEnemy()
+    {
+        // Find all enemies tagged as "Enemy" in the scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemyObject in enemies)
+        {
+            Transform enemyTransform = enemyObject.transform;
+            Enemy enemy = enemyObject.GetComponent<Enemy>();
+
+            // Skip null enemies or dead enemies
+            if (enemy == null || enemy.isDead) continue;
+
+            // Calculate the direction from enemy to player
+            Vector3 directionToPlayer = (playerTransform.position - enemyTransform.position).normalized;
+            // Calculate dot product to determine if the player is behind the enemy
+            float dotProduct = Vector3.Dot(enemyTransform.forward, directionToPlayer);
+            bool isPlayerBehind = dotProduct < 0;
+
+            // Calculate the distance between player and enemy
+            float distanceToPlayer = Vector3.Distance(playerTransform.position, enemyTransform.position);
+            bool isPlayerInRange = distanceToPlayer < assassinationRange;
+
+            // Check if conditions are met for assassination
+            if (isPlayerInRange && isPlayerBehind && Input.GetKeyDown(KeyCode.X) && !assassinationTriggered)
+            {
+                TriggerAssassination(enemy);
+            }
+
+            // If assassination is triggered and the animation is playing, trigger enemy death
+            if (assassinationTriggered && IsAssassinationAnimationPlaying())
+            {
+                enemy.Die();  // Kill the enemy
+                assassinationTriggered = false;  // Reset trigger for the next enemy
+            }
+        }
+    }
+
+    // Trigger assassination for the specified enemy
+    void TriggerAssassination(Enemy enemy)
+    {
+        Debug.Log("Assassination triggered on " + enemy.name);
+
+        // Play assassination animation on the player
+        playerAnimator.SetTrigger(assassinationAnimationName);
         assassinationTriggered = true;
     }
 
-    // Check if the player's assassination animation is playing
+    // Check if the assassination animation is currently playing
     bool IsAssassinationAnimationPlaying()
     {
         if (playerAnimator == null) return false;
 
-        // Get the current animation state of the player
+        // Get the current state of the player's animation
         AnimatorStateInfo stateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
 
-        // Check if the current animation is the assassination animation
+        // Return true if the assassination animation is playing
         return stateInfo.IsName(assassinationAnimationName);
     }
 }
