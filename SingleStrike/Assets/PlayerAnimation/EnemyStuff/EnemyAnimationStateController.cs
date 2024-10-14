@@ -30,28 +30,15 @@ public class EnemyAnimationController : MonoBehaviour
         animator.SetTrigger("TakeOutWeapon");
     }
 
-    // Function to set attacking state (optional: only if you are using a bool for continuous attacking)
-    public void SetAttackingState(bool isAttacking)
+    // Function to trigger the dying animation using a trigger
+    public void TriggerDyingAnimation()
     {
-        animator.SetBool("IsAttacking", isAttacking);
-    }
-
-    // Function to stop walking and reset to idle
-    public void StopWalking()
-    {
-        animator.SetBool("IsWalking", false);
-    }
-
-    // Function to set the dying animation state
-    public void SetDyingState(bool isDying)
-    {
-        animator.SetBool("IsDying", isDying);
+        animator.SetTrigger("Death");  // Use a trigger for the dying animation
     }
 
     // Optional: Function for dealing damage or effects when attack hits
     public void OnAttackHit()
     {
-        // This could be called as an animation event when the attack hits
         Debug.Log("Enemy attack hit!");
     }
 }
