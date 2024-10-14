@@ -1,4 +1,0 @@
-repository "SingleStrike@ryanreisdorf@cloud"
-  path "/"
-    br "/main"
-    co "/main"

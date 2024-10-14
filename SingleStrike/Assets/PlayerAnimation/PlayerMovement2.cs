@@ -11,7 +11,10 @@ public class PlayerMovement2 : MonoBehaviour
     private float originalHeight;
     private bool isGrounded;
     public bool isCrouching;
+    public Transform playerTrans;
     private Rigidbody rb;
+    public bool hasRotatedLeft = false;
+    public bool hasRotatedRight = true;
 
     // Reference to AnimationStateController
     public AnimationStateController2 animController;
@@ -73,19 +76,42 @@ public class PlayerMovement2 : MonoBehaviour
 
         if (move != 0)
         {
+            // Handle rotation based on movement direction
+            if (move < 0) // Moving left
+            {
+                if (!hasRotatedLeft)
+                {
+                    playerTrans.Rotate(0, -180, 0);
+                    hasRotatedLeft = true;
+                    hasRotatedRight = false;
+                }
+            }
+            else if (move > 0) // Moving right
+            {
+                if (!hasRotatedRight)
+                {
+                    playerTrans.Rotate(0, 180, 0);
+                    hasRotatedLeft = false;
+                    hasRotatedRight = true;
+                }
+            }
+
+            // Create movement direction based on the input
             Vector3 moveDirection = new Vector3(move * (isSprinting ? sprintSpeed : moveSpeed), rb.velocity.y, 0f);
             rb.velocity = moveDirection;
 
             // Sync walking or running animations
-            animController.SetWalkingState(true);  // Start walking
+            animController.SetWalkingState(true);
         }
         else
         {
+            // Stop horizontal movement when idle
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
             animController.SetWalkingState(false);  // Stop walking
         }
     }
 
-    private void Jump()
+        private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animController.SetJumpingState(true);  // Trigger jumping animation

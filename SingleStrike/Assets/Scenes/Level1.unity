@@ -3269,6 +3269,10 @@ MonoBehaviour:
   moveSpeed: 7.5
   jumpForce: 25
   crouchSpeed: 4
+  isCrouching: 0
+  playerTrans: {fileID: 1492226623}
+  hasRotatedLeft: 0
+  hasRotatedRight: 1
   animController: {fileID: 1492226621}
   sprintSpeed: 15
   soundManager: {fileID: 0}
