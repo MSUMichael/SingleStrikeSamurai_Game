@@ -27,7 +27,7 @@ public class AssassinationSystem : MonoBehaviour
 
     void Update()
     {
-        DetectAndAssassinateEnemy();
+        DetectAndAssassinateNearestEnemy();
     }
 
     void DetectAndAssassinateNearestEnemy()
@@ -37,6 +37,9 @@ public class AssassinationSystem : MonoBehaviour
 
         GameObject nearestEnemyObject = null;
         float nearestDistance = Mathf.Infinity;  // Initialize with a very large value
+
+        // Log all detected enemies
+        //Debug.Log("Detected Enemies:");
 
         // Loop through all enemies to find the nearest one
         foreach (GameObject enemyObject in enemies)
@@ -48,6 +51,9 @@ public class AssassinationSystem : MonoBehaviour
 
             // Calculate the distance between player and this enemy
             float distanceToPlayer = Vector3.Distance(playerTransform.position, enemyObject.transform.position);
+
+            // Log each enemy's name and distance
+            Debug.Log("Enemy: " + enemyObject.name + " - Distance: " + distanceToPlayer);
 
             // Check if this enemy is the nearest one so far
             if (distanceToPlayer < nearestDistance)
@@ -82,50 +88,6 @@ public class AssassinationSystem : MonoBehaviour
             if (assassinationTriggered && IsAssassinationAnimationPlaying())
             {
                 nearestEnemy.Die();  // Kill the enemy
-                assassinationTriggered = false;  // Reset trigger for the next enemy
-            }
-        }
-    }
-
-
-
-
-
-
-    // Detect enemies within range and behind the player, and check for assassination conditions
-    void DetectAndAssassinateEnemy()
-    {
-        // Find all enemies tagged as "Enemy" in the scene
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject enemyObject in enemies)
-        {
-            Transform enemyTransform = enemyObject.transform;
-            Enemy enemy = enemyObject.GetComponent<Enemy>();
-
-            // Skip null enemies or dead enemies
-            if (enemy == null || enemy.isDead) continue;
-
-            // Calculate the direction from enemy to player
-            Vector3 directionToPlayer = (playerTransform.position - enemyTransform.position).normalized;
-            // Calculate dot product to determine if the player is behind the enemy
-            float dotProduct = Vector3.Dot(enemyTransform.forward, directionToPlayer);
-            bool isPlayerBehind = dotProduct < 0;
-
-            // Calculate the distance between player and enemy
-            float distanceToPlayer = Vector3.Distance(playerTransform.position, enemyTransform.position);
-            bool isPlayerInRange = distanceToPlayer < assassinationRange;
-
-            // Check if conditions are met for assassination
-            if (isPlayerInRange && isPlayerBehind && Input.GetKeyDown(KeyCode.X) && !assassinationTriggered)
-            {
-                TriggerAssassination(enemy);
-            }
-
-            // If assassination is triggered and the animation is playing, trigger enemy death
-            if (assassinationTriggered && IsAssassinationAnimationPlaying())
-            {
-                enemy.Die();  // Kill the enemy
                 assassinationTriggered = false;  // Reset trigger for the next enemy
             }
         }
