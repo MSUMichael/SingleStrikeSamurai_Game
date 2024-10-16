@@ -707,6 +707,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9176860653301432819}
+    - targetCorrespondingSourceObject: {fileID: 100160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9176860653301432820}
+    - targetCorrespondingSourceObject: {fileID: 100160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9176860653301432821}
   m_SourcePrefab: {fileID: 100100000, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
 --- !u!1 &7814899988280481099 stripped
 GameObject:
@@ -768,10 +774,6 @@ MonoBehaviour:
   stopAttackRange: 10
   movementSpeed: 3
   meleeAttackRange: 2
-  arrowPrefab: {fileID: 1415740832984169338, guid: 354686ccb93fa0945b54676ac8f184e4, type: 3}
-  shootPoint: {fileID: 1242943994}
-  arrowForce: 20
-  fireAtNormalizedTime: 0.5
 --- !u!4 &9176860653301432816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
@@ -816,6 +818,38 @@ MonoBehaviour:
   rightHandPosition: {fileID: 7814899988280481100}
   bossAnimator: {fileID: 9176860653301432817}
   equipDelay: 0
+--- !u!114 &9176860653301432820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7814899988280481099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60bd0973cce1fa34dbafe29ab54bd2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossAnimator: {fileID: 9176860653301432817}
+  meleeAttackRange: 2
+  attackCooldown: 1.5
+  damageWindowDuration: 0.5
+--- !u!114 &9176860653301432821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7814899988280481099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291785e820d191341ac854cd4e53e1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 1415740832984169338, guid: 354686ccb93fa0945b54676ac8f184e4, type: 3}
+  shootPoint: {fileID: 1242943994}
+  arrowForce: 20
+  fireAtNormalizedTime: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
