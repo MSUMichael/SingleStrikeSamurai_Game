@@ -3269,6 +3269,7 @@ MonoBehaviour:
   moveSpeed: 7.5
   jumpForce: 25
   crouchSpeed: 4
+  playerAnim: {fileID: 1492226624}
   isCrouching: 0
   playerTrans: {fileID: 1492226623}
   hasRotatedLeft: 0
@@ -3339,6 +3340,11 @@ MonoBehaviour:
 --- !u!4 &1492226623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
+  m_PrefabInstance: {fileID: 741140902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1492226624 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
   m_PrefabInstance: {fileID: 741140902}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1565692711

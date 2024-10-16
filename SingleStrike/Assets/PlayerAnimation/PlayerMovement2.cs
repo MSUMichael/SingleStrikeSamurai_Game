@@ -7,7 +7,8 @@ public class PlayerMovement2 : MonoBehaviour
     public float moveSpeed = 3f;
     public float jumpForce = 5f;
     public float crouchSpeed = 2f;
-    
+
+    public Animator playerAnim;
     private float originalHeight;
     private bool isGrounded;
     public bool isCrouching;
@@ -15,11 +16,12 @@ public class PlayerMovement2 : MonoBehaviour
     private Rigidbody rb;
     public bool hasRotatedLeft = false;
     public bool hasRotatedRight = true;
+    bool isAttacking = false;
 
     // Reference to AnimationStateController
     public AnimationStateController2 animController;
 
-   
+
     public float sprintSpeed = 6f;  // Sprint speed
     private bool isSprinting = false;  // Tracks if the player is sprinting
 
@@ -68,6 +70,8 @@ public class PlayerMovement2 : MonoBehaviour
     {
         // Handle Movement Input in FixedUpdate to apply forces properly
         Move();
+        SwordSlash();
+        ComboSlash();
     }
 
     private void Move()
@@ -111,7 +115,7 @@ public class PlayerMovement2 : MonoBehaviour
         }
     }
 
-        private void Jump()
+    private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animController.SetJumpingState(true);  // Trigger jumping animation
@@ -120,7 +124,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void Crouch()
     {
-       
+
         moveSpeed = crouchSpeed;
         isCrouching = true;
         animController.SetCrouchingState(true);  // Trigger crouching animation
@@ -164,6 +168,22 @@ public class PlayerMovement2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+    }
+    private void SwordSlash()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            isAttacking = true;
+            playerAnim.SetTrigger("SwordSlash");
+        }
+    }
+    private void ComboSlash()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isAttacking = true;
+            playerAnim.SetTrigger("ComboSlash");
         }
     }
 }
