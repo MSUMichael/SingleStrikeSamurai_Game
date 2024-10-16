@@ -60,8 +60,6 @@ public class BossAI : MonoBehaviour
             bossAnimator.SetBool("isWalking", false);
             canMove = false;
         }
-
-        rangedAttackManager.CheckAnimationForFire();
     }
 
     #region Movement Logic
