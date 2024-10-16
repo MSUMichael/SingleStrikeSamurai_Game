@@ -1,13 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class SwordHandler : MonoBehaviour
 {
     public GameObject swordPrefab; // The sword prefab to attach
-    public GameObject scabbard; // The scabbard object
-    public Transform scabbardPosition; // The position on the scabbard to attach the sword
     public Transform rightHandPosition; // The position on the right hand to attach the sword
     public Animator bossAnimator; // Reference to the boss animator
     public float equipDelay = 0.5f; // Delay time for equipping the sword
@@ -20,9 +16,7 @@ public class SwordHandler : MonoBehaviour
     void Start()
     {
         bossAI = GetComponent<BossAI>();
-        // Attach the sword to the scabbard at the start
-        AttachSwordToScabbard();
-        scabbard.SetActive(true); // Make sure the scabbard is visible
+        AttachSwordToHand(); // Attach the sword to the hand initially
     }
 
     void Update()
@@ -50,63 +44,54 @@ public class SwordHandler : MonoBehaviour
         }
     }
 
-
-
     IEnumerator EquipSword()
     {
         isEquipping = true;
 
         // Move the sword to the hand position immediately before the animation starts
         AttachSwordToHand();
-        scabbard.SetActive(false); // Hide the scabbard immediately
 
-        //bossAnimator.SetTrigger("equipSword"); // Trigger the sword equip animation
-        yield return new WaitForSeconds(equipDelay); // Wait for the animation to complete
+        // Wait for the equip delay
+        yield return new WaitForSeconds(equipDelay);
 
         isSwordEquipped = true;
         isEquipping = false;
         Debug.Log("Sword equipped to the hand.");
     }
 
-
     IEnumerator UnequipSword()
     {
         isEquipping = true;
         yield return new WaitForSeconds(equipDelay); // Wait for the unequip delay
 
-        AttachSwordToScabbard(); // Move the sword back to the scabbard
+        DetachSwordFromHand(); // Move the sword back to a disabled state
         isSwordEquipped = false;
         isEquipping = false;
-        scabbard.SetActive(true); // Show the scabbard when the sword is unequipped
-        Debug.Log("Sword returned to the scabbard.");
-    }
-
-
-    void AttachSwordToScabbard()
-    {
-        if (currentSword == null)
-        {
-            // Instantiate the sword if it doesn't already exist
-            currentSword = Instantiate(swordPrefab, scabbardPosition);
-        }
-
-        // Parent the sword to the scabbard position and reset its local transform
-        currentSword.transform.SetParent(scabbardPosition);
-        currentSword.transform.localPosition = Vector3.zero;
-        currentSword.transform.localRotation = Quaternion.identity;
+        Debug.Log("Sword unequipped.");
     }
 
     void AttachSwordToHand()
     {
-        if (currentSword != null)
+        if (currentSword == null)
         {
-            // Parent the sword to the right hand position and reset its local transform
-            currentSword.transform.SetParent(rightHandPosition);
-            currentSword.transform.localPosition = Vector3.zero;
-
-            // Adjust the rotation for proper orientation in the right hand
-            currentSword.transform.localRotation = Quaternion.Euler(41.515f, -98.321f, 2.308f); // Adjust Y rotation as needed
+            // Instantiate the sword if it doesn't already exist
+            currentSword = Instantiate(swordPrefab, rightHandPosition);
         }
+
+        // Parent the sword to the right hand position and reset its local transform
+        currentSword.transform.SetParent(rightHandPosition);
+        currentSword.transform.localPosition = Vector3.zero;
+
+        // Adjust the rotation for proper orientation in the right hand
+        currentSword.transform.localRotation = Quaternion.Euler(41.515f, -98.321f, 2.308f); // Adjust as needed
+        currentSword.SetActive(true); // Ensure the sword is active
     }
 
+    void DetachSwordFromHand()
+    {
+        if (currentSword != null)
+        {
+            currentSword.SetActive(false); // Simply deactivate the sword
+        }
+    }
 }
