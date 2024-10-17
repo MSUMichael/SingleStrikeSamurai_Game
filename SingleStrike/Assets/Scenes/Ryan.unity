@@ -432,11 +432,6 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   assassinationRange: 1.5
   assassinationAnimationName: SwordSlash
---- !u!4 &1783864703 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400062, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
-  m_PrefabInstance: {fileID: 7814899988280481098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1793035611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400008, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
@@ -545,6 +540,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3515969216864484071, guid: 4e0b3da2843ff644ea2ba95deb123622, type: 3}
+      propertyPath: m_Size.z
+      value: 0.8413368
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515969216864484071, guid: 4e0b3da2843ff644ea2ba95deb123622, type: 3}
+      propertyPath: m_Center.z
+      value: -0.07933162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515969216864484071, guid: 4e0b3da2843ff644ea2ba95deb123622, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7035450296353555764, guid: 4e0b3da2843ff644ea2ba95deb123622, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -773,7 +780,7 @@ MonoBehaviour:
   detectionRange: 25
   stopAttackRange: 10
   movementSpeed: 3
-  meleeAttackRange: 2
+  meleeAttackRange: 1.3
 --- !u!4 &9176860653301432816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
@@ -812,12 +819,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15432cfb886986459b5a6123b50b4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordPrefab: {fileID: 100000, guid: 1d407a6008b748b4f9fec2ed72ffde73, type: 3}
-  scabbard: {fileID: 100000, guid: ba6cf27e84bbb6b4289b8055a61e55e3, type: 3}
-  scabbardPosition: {fileID: 1783864703}
+  swordPrefab: {fileID: 521675070329001678, guid: b357500f980789040a909d784366b57b, type: 3}
   rightHandPosition: {fileID: 7814899988280481100}
   bossAnimator: {fileID: 9176860653301432817}
-  equipDelay: 0
 --- !u!114 &9176860653301432820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,8 +836,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossAnimator: {fileID: 9176860653301432817}
   meleeAttackRange: 2
-  attackCooldown: 1.5
-  damageWindowDuration: 0.5
+  attackCooldown: 4
+  swordHitDetection: {fileID: -4359264208432573795, guid: b357500f980789040a909d784366b57b, type: 3}
 --- !u!114 &9176860653301432821
 MonoBehaviour:
   m_ObjectHideFlags: 0
