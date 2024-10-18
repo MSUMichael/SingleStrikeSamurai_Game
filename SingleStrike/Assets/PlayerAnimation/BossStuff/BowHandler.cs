@@ -65,7 +65,7 @@ public class BowHandler : MonoBehaviour
             currentBow.transform.localPosition = Vector3.zero;
 
             // Set the local rotation to adjust the bow's orientation in the left hand
-            currentBow.transform.localRotation = Quaternion.Euler(0f, 98f, 0f); // Adjust the Z-axis as needed
+            currentBow.transform.localRotation = Quaternion.Euler(83.592f, 72.121f, -31.385f); // Adjust the Z-axis as needed
             //Debug.Log("Bow attached to the left hand with adjusted rotation.");
         }
     }

@@ -76,7 +76,7 @@ public class SwordHandler : MonoBehaviour
             currentSword.transform.localPosition = Vector3.zero;
 
             // Adjust the rotation for proper orientation in the right hand
-            currentSword.transform.localRotation = Quaternion.Euler(41.515f, -98.321f, 2.308f); // Adjust as needed
+            currentSword.transform.localRotation = Quaternion.Euler(-32.876f, 122.654f, 151.993f); // Adjust as needed
         }
     }
 
