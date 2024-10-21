@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float attackRange = 2f;
     public int health = 100;
     public float fieldOfViewAngle = 90f;
+    public float waitTimeAtWaypoint = 2f; // Public variable for the wait time
 
     private Rigidbody rb;
     private Vector3 movement;
@@ -18,21 +19,27 @@ public class Enemy : MonoBehaviour
     private bool inRange = false;
     private bool weaponTakenOut = false;
     private bool isWaiting = false;
-    public bool isDead = false;  // Flag to track if the enemy is dead
+    public bool isDead = false;
 
     public EnemyAnimationController enemyAnimationController;
     public PlayerMovement2 playerMovement;
-    private BoxCollider boxCollider;  // Reference to the BoxCollider
+    private BoxCollider boxCollider;
     private Animator animator;
+
+    public Transform waypoint1; // First waypoint for patrolling
+    public Transform waypoint2; // Second waypoint for patrolling
+    private Transform currentTargetWaypoint; // Current waypoint to move towards
+    private bool isPatrolling = true; // Whether the enemy is patrolling
+
+    private Vector3 lastPosition; // Tracks the last position to determine movement direction
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();  // Get the BoxCollider component
-        animator = GetComponent<Animator>();  // Get the Animator component
+        boxCollider = GetComponent<BoxCollider>();
+        animator = GetComponent<Animator>();
         Debug.Log("Enemy initialized.");
 
-        // Automatically find the player and assign the playerMovement reference
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -42,11 +49,17 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("No player object found with tag 'Player'");
         }
+
+        // Initialize patrolling
+        currentTargetWaypoint = waypoint1;
+
+        // Initialize lastPosition with the current position
+        lastPosition = transform.position;
     }
 
     void Update()
     {
-        if (isDead) return;  // Prevent any further updates if the enemy is dead
+        if (isDead) return;
 
         DetectPlayer();
         CheckAttackRange();
@@ -54,20 +67,26 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isDead) return;  // Prevent any movement if the enemy is dead
+        if (isDead) return;
 
         if (targetPlayer != null && !inRange && !isWaiting)
         {
             MoveEnemy();
+        }
+        else if (isPatrolling && !playerInRange && !isWaiting)
+        {
+            Patrol();
         }
         else
         {
             rb.velocity = Vector3.zero;
             enemyAnimationController.SetWalkingState(false);
         }
+
+        // Update the enemy's facing direction
+        UpdateFacingDirection();
     }
 
-    // Detect the player, only if the enemy is not dead
     void DetectPlayer()
     {
         if (isDead) return;
@@ -129,7 +148,7 @@ public class Enemy : MonoBehaviour
 
     void CheckAttackRange()
     {
-        if (isDead) return;  // Prevent attacking if the enemy is dead
+        if (isDead) return;
 
         if (targetPlayer != null)
         {
@@ -155,10 +174,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Deal damage to the enemy
     public void TakeDamage(int damage)
     {
-        if (isDead) return;  // Prevent taking damage if already dead
+        if (isDead) return;
 
         health -= damage;
         if (health <= 0)
@@ -167,33 +185,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Trigger enemy death behavior
     public void Die()
     {
-        if (isDead) return;  // Ensure Die() is called only once
+        if (isDead) return;
         isDead = true;
 
-        // Play death animation
         enemyAnimationController.TriggerDyingAnimation();
         animator.SetTrigger("Death");
 
-        // Shorten the BoxCollider to simulate the enemy collapsing
         if (boxCollider != null)
         {
             Destroy(boxCollider);
         }
 
-        // Stop movement and physics interaction
         rb.velocity = Vector3.zero;
         rb.isKinematic = true;
 
-        // Disable this script to stop further behavior
         this.enabled = false;
 
         Debug.Log(gameObject.name + " has died.");
     }
 
-    // Check if the player is in front of the enemy
     bool IsPlayerInFront(Transform playerTransform)
     {
         Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
@@ -204,7 +216,6 @@ public class Enemy : MonoBehaviour
         return angleToPlayer < fieldOfViewAngle / 2;
     }
 
-    // Coroutine to wait before moving
     IEnumerator WaitBeforeMoving()
     {
         isWaiting = true;
@@ -212,7 +223,53 @@ public class Enemy : MonoBehaviour
         isWaiting = false;
     }
 
-    // Optional: Draw Gizmos for debugging purposes
+    void Patrol()
+    {
+        if (currentTargetWaypoint == null) return;
+
+        Vector3 direction = (currentTargetWaypoint.position - transform.position).normalized;
+        rb.velocity = direction * moveSpeed;
+        enemyAnimationController.SetWalkingState(true);
+
+        float distanceToWaypoint = Vector3.Distance(transform.position, currentTargetWaypoint.position);
+        if (distanceToWaypoint < 0.5f)
+        {
+            StartCoroutine(WaitAtWaypoint());
+        }
+    }
+
+    IEnumerator WaitAtWaypoint()
+    {
+        isWaiting = true;
+        rb.velocity = Vector3.zero;
+        enemyAnimationController.SetWalkingState(false);
+        yield return new WaitForSeconds(waitTimeAtWaypoint);
+        isWaiting = false;
+
+        currentTargetWaypoint = currentTargetWaypoint == waypoint1 ? waypoint2 : waypoint1;
+    }
+
+    void UpdateFacingDirection()
+    {
+        Vector3 movementDirection = transform.position - lastPosition;
+
+        if (movementDirection.sqrMagnitude > 0.001f)
+        {
+            if (movementDirection.x > 0)
+            {
+                // Rotate to face right (90 degrees)
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if (movementDirection.x < 0)
+            {
+                // Rotate to face left (-90 degrees)
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
+        }
+
+        lastPosition = transform.position;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -226,6 +283,12 @@ public class Enemy : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        if (waypoint1 != null && waypoint2 != null)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawLine(waypoint1.position, waypoint2.position);
+        }
     }
 
     void DrawFieldOfViewGizmos()
