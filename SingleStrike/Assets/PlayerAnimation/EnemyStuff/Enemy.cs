@@ -18,16 +18,18 @@ public class Enemy : MonoBehaviour
     private bool inRange = false;
     private bool weaponTakenOut = false;
     private bool isWaiting = false;
-    private bool isDead = false;  // New flag to track if the enemy is dead
+    public bool isDead = false;  // Flag to track if the enemy is dead
 
     public EnemyAnimationController enemyAnimationController;
     public PlayerMovement2 playerMovement;
     private BoxCollider boxCollider;  // Reference to the BoxCollider
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();  // Get the BoxCollider component
+        animator = GetComponent<Animator>();  // Get the Animator component
         Debug.Log("Enemy initialized.");
 
         // Automatically find the player and assign the playerMovement reference
@@ -75,7 +77,6 @@ public class Enemy : MonoBehaviour
         if (playerObject != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerObject.transform.position);
-
             float currentDetectionRange = playerMovement.isCrouching ? crouchDetectionRange : detectionRange;
 
             if (distanceToPlayer < currentDetectionRange && IsPlayerInFront(playerObject.transform))
@@ -172,8 +173,9 @@ public class Enemy : MonoBehaviour
         if (isDead) return;  // Ensure Die() is called only once
         isDead = true;
 
-        // Trigger death animation using a trigger
+        // Play death animation
         enemyAnimationController.TriggerDyingAnimation();
+        animator.SetTrigger("Death");
 
         // Shorten the BoxCollider to simulate the enemy collapsing
         if (boxCollider != null)
@@ -188,14 +190,13 @@ public class Enemy : MonoBehaviour
         // Disable this script to stop further behavior
         this.enabled = false;
 
-        Debug.Log("Enemy Died");
+        Debug.Log(gameObject.name + " has died.");
     }
 
     // Check if the player is in front of the enemy
     bool IsPlayerInFront(Transform playerTransform)
     {
         Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-
         float dotProduct = Vector3.Dot(transform.forward, directionToPlayer);
         float clampedDotProduct = Mathf.Clamp(dotProduct, -1f, 1f);
         float angleToPlayer = Mathf.Acos(clampedDotProduct) * Mathf.Rad2Deg;
