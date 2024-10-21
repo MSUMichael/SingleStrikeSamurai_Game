@@ -6,15 +6,24 @@ public class MeleeAttackManager : MonoBehaviour
     public Animator bossAnimator; // Reference to the boss's animator
     public float meleeAttackRange = 2f; // Melee attack range
     public float attackCooldown = 1.5f; // Time between consecutive attacks
+    public AudioClip swordSound; // Sword sound effect for melee attacks
 
     private BossAI bossAI; // Reference to the BossAI script
     public SwordHitDetection swordHitDetection; // Reference to the SwordHitDetection script
     private bool canAttack = true; // Tracks if the boss can attack
+    private AudioSource audioSource; // Reference to the AudioSource
 
     void Start()
     {
         // Get the BossAI component
         bossAI = GetComponent<BossAI>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            // Add an AudioSource component if not already present
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         // Log to see if the reference is set correctly
         if (swordHitDetection != null)
@@ -29,12 +38,9 @@ public class MeleeAttackManager : MonoBehaviour
 
     public void OnDefenseStance()
     {
-        //Debug.Log("OnDefenseStance method called.");
-
         if (swordHitDetection != null)
         {
-            //swordHitDetection.ResetHitDetection();
-            //Debug.Log("Defense stance triggered. Hit detection reset.");
+            // Reset hit detection logic if necessary
         }
         else
         {
@@ -42,21 +48,15 @@ public class MeleeAttackManager : MonoBehaviour
         }
     }
 
-
     void Update()
     {
-        if (bossAI == null)
-        {
-            // Debug.LogWarning("BossAI reference is missing.");
-            return; // Make sure BossAI is present
-        }
+        if (bossAI == null) return; // Make sure BossAI is present
 
         float distanceToPlayer = Vector3.Distance(transform.position, bossAI.player.position);
 
         // Check if the player is within melee attack range and the boss can attack
         if (distanceToPlayer <= meleeAttackRange && canAttack)
         {
-            // Debug.Log("Player is within melee range. Attempting melee attack.");
             PerformMeleeAttack();
         }
     }
@@ -69,20 +69,16 @@ public class MeleeAttackManager : MonoBehaviour
         {
             case 1:
                 bossAnimator.SetTrigger("meleeAttack");
-                // Debug.Log("Triggered meleeAttack animation.");
                 break;
             case 2:
                 bossAnimator.SetTrigger("meleeAttack2");
-                // Debug.Log("Triggered meleeAttack2 animation.");
                 break;
             case 3:
                 bossAnimator.SetTrigger("meleeAttack3");
-                // Debug.Log("Triggered meleeAttack3 animation.");
                 break;
         }
 
         canAttack = false; // Prevent further attacks until the cooldown is over
-        // Debug.Log("Attack initiated. canAttack set to false.");
 
         // Start the attack cooldown
         StartCoroutine(AttackCooldown());
@@ -90,12 +86,16 @@ public class MeleeAttackManager : MonoBehaviour
 
     IEnumerator AttackCooldown()
     {
-        // Debug.Log("Starting attack cooldown for " + attackCooldown + " seconds.");
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true; // Allow the boss to attack again after the cooldown
-        // Debug.Log("Attack cooldown complete. canAttack set to true.");
     }
 
-    
-
+    // This method will be triggered by an animation event to play the sword sound
+    public void PlaySwordSound()
+    {
+        if (swordSound != null)
+        {
+            audioSource.PlayOneShot(swordSound);
+        }
+    }
 }

@@ -101,4 +101,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ccd8abf5de6414b94b6b5a9b2e3f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasHit: 0
+  hitResetDelay: 2.5
