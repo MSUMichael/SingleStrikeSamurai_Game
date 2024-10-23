@@ -2342,7 +2342,7 @@ Transform:
   m_GameObject: {fileID: 958320900}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.04, y: -4.44, z: 3.59}
+  m_LocalPosition: {x: -8.21, y: -4.44, z: 3.59}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3485,6 +3485,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1947860790}
+    - targetCorrespondingSourceObject: {fileID: 100160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1947860791}
+    - targetCorrespondingSourceObject: {fileID: 100160, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1947860794}
   m_SourcePrefab: {fileID: 100100000, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
 --- !u!1001 &1411886233
 PrefabInstance:
@@ -5221,7 +5227,11 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+<<<<<<< Updated upstream
 --- !u!114 &1947860793
+=======
+--- !u!114 &1947860791
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5230,6 +5240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947860785}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: 8792e329c4fadd3469a499478f00ff22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -5242,6 +5253,31 @@ MonoBehaviour:
   isDead: 0
   enemyAnimationController: {fileID: 0}
   playerMovement: {fileID: 1492226618}
+=======
+  m_Script: {fileID: 11500000, guid: 962fe1a93dd5a09449fce963d1821cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1492226623}
+  detectionRange: 6
+  attackRange: 2
+  patrolSpeed: 2
+  chaseSpeed: 4
+  Points:
+  - {fileID: 934962796}
+  - {fileID: 958320901}
+--- !u!114 &1947860794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947860785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1bebb88a8111341a06a77fb1ab33fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1001 &1950926690
 PrefabInstance:
   m_ObjectHideFlags: 0
