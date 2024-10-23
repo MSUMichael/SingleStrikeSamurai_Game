@@ -5,14 +5,24 @@ public class SwordHandler : MonoBehaviour
     public GameObject swordPrefab; // The sword prefab to attach
     public Transform rightHandPosition; // The position on the right hand to attach the sword
     public Animator bossAnimator; // Reference to the boss animator
+    public AudioClip swordEquipSound; // Sound effect for equipping the sword
 
     private GameObject currentSword; // The instantiated sword
     private bool isSwordEquipped = false; // Track if the sword is equipped in the hand
     private BossAI bossAI;
+    private AudioSource audioSource; // Reference to the AudioSource
 
     void Start()
     {
         bossAI = GetComponent<BossAI>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            // Add an AudioSource component if not already present
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         InstantiateSword(); // Create the sword but do not attach it initially
     }
 
@@ -47,6 +57,15 @@ public class SwordHandler : MonoBehaviour
         AttachSwordToHand(); // Attach the sword to the hand
         isSwordEquipped = true;
         Debug.Log("Sword activated during the equip animation.");
+    }
+
+    // This method will be called via an animation event to play the equip sound
+    public void PlaySwordEquipSound()
+    {
+        if (swordEquipSound != null)
+        {
+            audioSource.PlayOneShot(swordEquipSound);
+        }
     }
 
     void UnequipSword()

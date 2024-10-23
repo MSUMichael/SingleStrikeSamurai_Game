@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Water
   - Points
+  - EnemyHurtbox
+  - PlayerHurtbox
   layers:
   - Default
   - TransparentFX
@@ -16,10 +18,14 @@ TagManager:
   - Water
   - UI
   - Enemy
+  - Post Processing
   - 
   - 
   - 
-  - 
+  - AttackHitbox
+  - PlayerHurtbox
+  - EnemyHurtbox
+  - EnemyHitbox
   - 
   - 
   - 

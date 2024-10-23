@@ -4,7 +4,7 @@ using System.Collections;
 public class SwordHitDetection : MonoBehaviour
 {
     private bool hasHit; // Tracks if the sword has already hit the player
-    public float hitResetDelay = 0.5f; // Time to wait before allowing another hit
+    public float hitResetDelay = 4f; // Time to wait before allowing another hit
 
     void Start()
     {

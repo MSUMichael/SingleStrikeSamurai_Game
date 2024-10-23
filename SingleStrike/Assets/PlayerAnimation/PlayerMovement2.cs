@@ -16,7 +16,7 @@ public class PlayerMovement2 : MonoBehaviour
     private Rigidbody rb;
     public bool hasRotatedLeft = false;
     public bool hasRotatedRight = true;
-    bool isAttacking = false;
+    
 
     // Reference to AnimationStateController
     public AnimationStateController2 animController;
@@ -70,8 +70,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         // Handle Movement Input in FixedUpdate to apply forces properly
         Move();
-        SwordSlash();
-        ComboSlash();
+        
     }
 
     private void Move()
@@ -170,20 +169,5 @@ public class PlayerMovement2 : MonoBehaviour
             isGrounded = false;
         }
     }
-    private void SwordSlash()
-    {
-        if(Input.GetMouseButton(0))
-        {
-            isAttacking = true;
-            playerAnim.SetTrigger("SwordSlash");
-        }
-    }
-    private void ComboSlash()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            isAttacking = true;
-            playerAnim.SetTrigger("ComboSlash");
-        }
-    }
+    
 }
