@@ -70,7 +70,7 @@ public class CombatManager : MonoBehaviour
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
                 if (enemyHealth != null)
                 {
-                    enemyHealth.TakeDamage(attackDamage);
+                   // enemyHealth.TakeDamage(attackDamage);
                 }
             }
         }
