@@ -25,6 +25,16 @@ public class HitDetection : MonoBehaviour
                 enemyHealth.TakeDamage(damage);
                 Debug.Log("Enemy took damage: " + damage);
             }
+            else
+            {
+                // If EnemyHealth is not found, try to get the BossHealth component
+                BossHealth bossHealth = other.GetComponent<BossHealth>();
+                if (bossHealth != null)
+                {
+                    bossHealth.TakeDamage(damage);
+                    Debug.Log("Boss took damage: " + damage);
+                }
+            }
         }
     }
 }

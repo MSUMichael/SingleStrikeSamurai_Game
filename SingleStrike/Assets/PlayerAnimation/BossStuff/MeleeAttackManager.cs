@@ -9,7 +9,7 @@ public class MeleeAttackManager : MonoBehaviour
     public AudioClip swordSound; // Sword sound effect for melee attacks
 
     private BossAI bossAI; // Reference to the BossAI script
-    public SwordHitDetection swordHitDetection; // Reference to the SwordHitDetection script
+    
     private bool canAttack = true; // Tracks if the boss can attack
     private AudioSource audioSource; // Reference to the AudioSource
 
@@ -25,28 +25,10 @@ public class MeleeAttackManager : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        // Log to see if the reference is set correctly
-        if (swordHitDetection != null)
-        {
-            Debug.Log("SwordHitDetection successfully assigned in Start().");
-        }
-        else
-        {
-            Debug.LogWarning("SwordHitDetection reference is still null in Start().");
-        }
+        
     }
 
-    public void OnDefenseStance()
-    {
-        if (swordHitDetection != null)
-        {
-            // Reset hit detection logic if necessary
-        }
-        else
-        {
-            Debug.LogWarning("SwordHitDetection reference is missing in OnDefenseStance().");
-        }
-    }
+    
 
     void Update()
     {
@@ -64,19 +46,7 @@ public class MeleeAttackManager : MonoBehaviour
     void PerformMeleeAttack()
     {
         // Trigger the melee attack animation
-        int attackType = Random.Range(1, 4); // Randomly choose an attack type
-        switch (attackType)
-        {
-            case 1:
-                bossAnimator.SetTrigger("meleeAttack");
-                break;
-            case 2:
-                bossAnimator.SetTrigger("meleeAttack2");
-                break;
-            case 3:
-                bossAnimator.SetTrigger("meleeAttack3");
-                break;
-        }
+        bossAnimator.SetTrigger("meleeAttack");
 
         canAttack = false; // Prevent further attacks until the cooldown is over
 
