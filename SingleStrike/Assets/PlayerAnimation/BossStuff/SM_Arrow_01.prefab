@@ -13,6 +13,18 @@ PrefabInstance:
       value: SM_Arrow_01
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e98c129b2cbb9184eb9c7d8d9e6df07c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e98c129b2cbb9184eb9c7d8d9e6df07c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e98c129b2cbb9184eb9c7d8d9e6df07c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: e98c129b2cbb9184eb9c7d8d9e6df07c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.533466
       objectReference: {fileID: 0}
