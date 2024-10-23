@@ -34,4 +34,17 @@ public class AnimationStateController2 : MonoBehaviour
         animator.SetBool("IsJumping", isJumping);
         //Debug.Log("Jumping state set to: " + isJumping);
     }
+
+    public void TriggerOverAttack()
+    {
+        animator.SetTrigger("PlayerOverAttack"); // Use the trigger parameter for over attack
+    }
+
+    public void TriggerUnderAttack()
+    {
+        animator.SetTrigger("PlayerUnderAttack"); // Use the trigger parameter for under attack
+    }
+
+
+
 }
