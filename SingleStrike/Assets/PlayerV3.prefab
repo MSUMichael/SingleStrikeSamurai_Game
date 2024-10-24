@@ -1794,23 +1794,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.0642388
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1847,6 +1847,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_Name
       value: PlayerV3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_Controller
@@ -1968,16 +1972,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406352b52006d41499afba903440edec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpForce: 15
-  crouchSpeed: 2
+  moveSpeed: 5
+  jumpForce: 20
+  crouchSpeed: 3
   playerAnim: {fileID: 7353247554827904424}
   isCrouching: 0
   playerTrans: {fileID: 3525147964932308946}
   hasRotatedLeft: 0
   hasRotatedRight: 1
   animController: {fileID: 7987358410978688211}
-  sprintSpeed: 6
+  sprintSpeed: 10
   soundManager: {fileID: 0}
 --- !u!114 &1817515845134239093
 MonoBehaviour:

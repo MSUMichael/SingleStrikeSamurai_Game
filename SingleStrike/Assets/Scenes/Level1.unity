@@ -14556,34 +14556,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1473331158709388885, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: jumpForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473331158709388885, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473331158709388885, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: crouchSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473331158709388885, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: sprintSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30
@@ -14627,10 +14599,6 @@ PrefabInstance:
     - target: {fileID: 4296442605401236840, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_Name
       value: PlayerV3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296442605401236840, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31331,21 +31299,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3118547747457278378, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118547747457278378, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
-      propertyPath: detectionRange
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118547747457278378, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 2010983553}
-    - target: {fileID: 3118547747457278378, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
-      propertyPath: crouchDetectionRange
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 6238620351807758515, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_Name
       value: EnemyV3
@@ -31389,10 +31345,6 @@ PrefabInstance:
     - target: {fileID: 6764363229410261513, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8345316867549966836, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
-      propertyPath: m_Constraints
-      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
