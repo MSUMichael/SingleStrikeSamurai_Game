@@ -2036,7 +2036,7 @@ MonoBehaviour:
   moveSpeed: 5
   detectionRange: 20
   crouchDetectionRange: 12
-  attackRange: 1.5
+  attackRange: 1.7
   fieldOfViewAngle: 90
   waitTimeAtWaypoint: 2
   enemyAnimationController: {fileID: 38895608288431985}
