@@ -36,6 +36,9 @@ public class BossHealth : MonoBehaviour
         // Destroy the enemy GameObject or trigger a death animation
         Debug.Log("Enemy died.");
         LockPosition();
+        BossDeathSFX();
+        BossBloodSpray();
+        BossBloodPool();
         animator.SetTrigger("IsDead");
         GetComponent<Collider>().enabled = false; // Disable the enemy's collider to prevent further interactions
         this.enabled = false;
@@ -68,20 +71,21 @@ public class BossHealth : MonoBehaviour
 
     public void BossDeathSFX()
     {
+        
         if (bossDeathSound != null)
         {
             audioSource.PlayOneShot(bossDeathSound);
-            Debug.Log("played boss death sound");
+            
         }
     }
 
     public void BossBloodSpray()
     {
-        
+        Debug.Log("Blood spray");
     }
 
     public void BossBloodPool()
     {
-        
+        Debug.Log("Blood Pool");
     }
 }
