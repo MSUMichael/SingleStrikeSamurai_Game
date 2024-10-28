@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4467314370499209119}
   - component: {fileID: 6455110794346276875}
+  - component: {fileID: 357058203132303162}
   m_Layer: 0
   m_Name: BossHitbox
   m_TagString: Untagged
@@ -84,6 +85,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.4230237}
   m_Center: {x: 1.7131258e-15, y: 0, z: 0.21151148}
+--- !u!114 &357058203132303162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795098505092171145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b908d17931db142bacbf8d48c3d851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  animator: {fileID: 4760548575881153542}
 --- !u!1 &2681488474215307264
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,16 +201,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18
+      value: 314.38922
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.44511032
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282,6 +309,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 610973783671838323}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5573040305513919350}
   m_SourcePrefab: {fileID: 100100000, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}
 --- !u!1 &2658247688305571188 stripped
 GameObject:
@@ -359,7 +389,6 @@ MonoBehaviour:
   meleeAttackRange: 1.5
   attackCooldown: 1.5
   swordSound: {fileID: 8300000, guid: c088f50bdba4c87449cfb07719881258, type: 3}
-  swordHitDetection: {fileID: -4359264208432573795, guid: b357500f980789040a909d784366b57b, type: 3}
 --- !u!114 &125848970103482612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,8 +489,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.5643456, z: 0.41921034}
-  m_Center: {x: -8.717981e-18, y: 1.0240518, z: -0.03063652}
+  m_Size: {x: 0.1, y: 0.4, z: 0.4}
+  m_Center: {x: 0.051793054, y: 1.024052, z: -0.030636529}
 --- !u!114 &610973783671838323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,8 +503,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88638d04a7ef3244d904e41dbeed248a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   animator: {fileID: 4760548575881153542}
+  bossDeathSound: {fileID: 0}
+--- !u!114 &5573040305513919350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658247688305571188}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b64d4839b72e5469c0ae0a3f8379f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitbox: {fileID: 1795098505092171145}
 --- !u!4 &3257929376332093514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 366175167995203695, guid: d8adc12fd923a0b4c8b562bef5ae82e9, type: 3}

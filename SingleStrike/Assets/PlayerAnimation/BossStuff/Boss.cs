@@ -13,10 +13,12 @@ public class BossAI : MonoBehaviour
 
     private bool isDelayStarted = false; // Track if the movement delay has started
     private bool canMove = false; // Track if the boss is allowed to move
+   
 
     void Start()
     {
         rangedAttackManager = GetComponent<RangedAttackManager>();
+        
     }
 
     void Update()
@@ -81,6 +83,12 @@ public class BossAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
     #endregion
+
+    
+
+
+
+
 
     #region Debug and Gizmos
     void DrawDebugLines(float distanceToPlayer)

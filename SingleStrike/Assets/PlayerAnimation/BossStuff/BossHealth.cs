@@ -5,10 +5,19 @@ public class BossHealth : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
     public Animator animator;
+    public AudioClip bossDeathSound; // Sound effect for boss dying
+    private AudioSource audioSource; // Reference to the AudioSource
 
     void Start()
     {
         currentHealth = maxHealth;
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            // Add an AudioSource component if not already present
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void TakeDamage(int damageAmount)
@@ -54,5 +63,25 @@ public class BossHealth : MonoBehaviour
 
         // Optionally, freeze the transform by disabling all constraints
         transform.hasChanged = false; // Reset any pending changes to the transform
+
+    }
+
+    public void BossDeathSFX()
+    {
+        if (bossDeathSound != null)
+        {
+            audioSource.PlayOneShot(bossDeathSound);
+            Debug.Log("played boss death sound");
+        }
+    }
+
+    public void BossBloodSpray()
+    {
+        
+    }
+
+    public void BossBloodPool()
+    {
+        
     }
 }

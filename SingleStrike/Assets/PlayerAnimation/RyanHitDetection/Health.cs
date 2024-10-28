@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        Debug.Log("Enemy took " + damageAmount + " damage. Current health: " + currentHealth);
+        Debug.Log("Player took " + damageAmount + " damage. Current health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
