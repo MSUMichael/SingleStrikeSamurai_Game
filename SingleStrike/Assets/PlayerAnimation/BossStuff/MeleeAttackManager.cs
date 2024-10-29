@@ -7,7 +7,7 @@ public class MeleeAttackManager : MonoBehaviour
     public float meleeAttackRange = 2f; // Melee attack range
     public float attackCooldown = 1.5f; // Time between consecutive attacks
     public AudioClip swordSound; // Sword sound effect for melee attacks
-
+    public AudioClip swordBlockedSound; // Sound effect for sword block
     private BossAI bossAI; // Reference to the BossAI script
     
     private bool canAttack = true; // Tracks if the boss can attack
@@ -66,6 +66,15 @@ public class MeleeAttackManager : MonoBehaviour
         if (swordSound != null)
         {
             audioSource.PlayOneShot(swordSound);
+        }
+    }
+
+    public void SwordBlockedSound()
+    {
+        if (swordBlockedSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(swordBlockedSound);
+            Debug.Log("Sword blocked sound played from animation event.");
         }
     }
 }

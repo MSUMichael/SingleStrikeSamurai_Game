@@ -8,10 +8,17 @@ public class BossHealth : MonoBehaviour
     public AudioClip bossDeathSound; // Sound effect for boss dying
     private AudioSource audioSource; // Reference to the AudioSource
 
+    public GameObject bloodSprayPrefab; // Reference to the Blood Spray prefab
+    public GameObject bloodPoolPrefab;  // Reference to the Blood Pool prefab
+    public Transform bloodSpawnPoint;   // Point where the blood spray will be spawned
+
+    private bool hasDied;
+
     void Start()
     {
         currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
+        hasDied = false;
 
         if (audioSource == null)
         {
@@ -28,6 +35,7 @@ public class BossHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+
         }
     }
 
@@ -36,25 +44,28 @@ public class BossHealth : MonoBehaviour
         // Destroy the enemy GameObject or trigger a death animation
         Debug.Log("Enemy died.");
         LockPosition();
-        BossDeathSFX();
-        BossBloodSpray();
-        BossBloodPool();
+        if (hasDied != false)
+        {
+            BossDeathSFX();
+            BossBloodSpray();
+            BossBloodPool();
+        }
+         
         animator.SetTrigger("IsDead");
         GetComponent<Collider>().enabled = false; // Disable the enemy's collider to prevent further interactions
         this.enabled = false;
-        
+
         Destroy(gameObject, 15f);
     }
+
     private void LockPosition()
     {
-        // Disable any Rigidbody to prevent further movement
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = true; // Make Rigidbody kinematic to stop physics from affecting it
         }
 
-        // Optionally, disable other scripts that could affect the transform
         MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour script in scripts)
         {
@@ -64,28 +75,32 @@ public class BossHealth : MonoBehaviour
             }
         }
 
-        // Optionally, freeze the transform by disabling all constraints
         transform.hasChanged = false; // Reset any pending changes to the transform
-
     }
 
     public void BossDeathSFX()
     {
-        
         if (bossDeathSound != null)
         {
             audioSource.PlayOneShot(bossDeathSound);
-            
         }
     }
 
     public void BossBloodSpray()
     {
-        Debug.Log("Blood spray");
+        if (bloodSprayPrefab != null && bloodSpawnPoint != null)
+        {
+            Instantiate(bloodSprayPrefab, bloodSpawnPoint.position, bloodSpawnPoint.rotation);
+            Debug.Log("Blood spray created.");
+        }
     }
 
     public void BossBloodPool()
     {
-        Debug.Log("Blood Pool");
+        if (bloodPoolPrefab != null)
+        {
+            Instantiate(bloodPoolPrefab, transform.position, Quaternion.identity);
+            Debug.Log("Blood pool created.");
+        }
     }
 }
