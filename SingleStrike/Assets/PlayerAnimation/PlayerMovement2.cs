@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement2 : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerMovement2 : MonoBehaviour
     public float jumpForce = 5f;
     public float crouchSpeed = 2f;
 
+    private float oldMoveSpeed;
     public Animator playerAnim;
     private float originalHeight;
     private bool isGrounded;
@@ -32,6 +34,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         originalHeight = transform.localScale.y;
+        oldMoveSpeed = moveSpeed;   
     }
 
     public void Update()
@@ -123,16 +126,16 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void Crouch()
     {
-
+        
         moveSpeed = crouchSpeed;
         isCrouching = true;
         animController.SetCrouchingState(true);  // Trigger crouching animation
     }
-
+    
     private void StandUp()
     {
         transform.localScale = new Vector3(transform.localScale.x, originalHeight, transform.localScale.z);
-        moveSpeed = 7.5f;
+        moveSpeed = oldMoveSpeed;
         isCrouching = false;
         animController.SetCrouchingState(false);  // Reset crouching animation
     }
