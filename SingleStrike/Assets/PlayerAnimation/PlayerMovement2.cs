@@ -27,8 +27,7 @@ public class PlayerMovement2 : MonoBehaviour
     public float sprintSpeed = 6f;  // Sprint speed
     private bool isSprinting = false;  // Tracks if the player is sprinting
 
-    // Sound Reference
-    public PlayerSoundManager soundManager;
+    
 
     void Start()
     {
@@ -121,7 +120,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animController.SetJumpingState(true);  // Trigger jumping animation
-        if (soundManager != null) soundManager.PlayJumpSound();
+        
     }
 
     private void Crouch()
