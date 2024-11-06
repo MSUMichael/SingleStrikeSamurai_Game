@@ -7,6 +7,13 @@ TagManager:
   - Ground
   - Enemy
   - Water
+<<<<<<< Updated upstream
+=======
+  - Points
+  - EnemyHurtbox
+  - PlayerHurtbox
+  - BossHitbox
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
