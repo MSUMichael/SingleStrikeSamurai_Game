@@ -164,7 +164,7 @@ public class BossHealth : MonoBehaviour
         if (bloodPoolPrefab != null)
         {
             GameObject poolInstance = Instantiate(bloodPoolPrefab, transform.position, Quaternion.Euler(new Vector3(0, rndPoolRot, 0)));
-            poolInstance.transform.localScale = bloodScale;
+            poolInstance.transform.localScale = bloodScale*2;
             Debug.Log("Blood pool created.");
         }
     }

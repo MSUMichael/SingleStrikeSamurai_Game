@@ -9,8 +9,6 @@ public class bloodSprayEffect : MonoBehaviour
     private float fallSpeed = 0.01f;
     private float acceleration = 0.0f;
     private float inertia = 1.0f;
-    private float sprayMod = 0.0f;
-    private float sprayModRate = 0.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,17 +25,19 @@ public class bloodSprayEffect : MonoBehaviour
 
         inertia -= 0.34f;
 
-        if (inertia >= 0.0f && transform.localScale.x <= 0.1f)
+        transform.localScale = transform.localScale + new Vector3(0.0f, 0.1f, 0.1f);
+
+        if (inertia >= 0.0f)
         {
-            transform.localScale = transform.localScale + new Vector3(0.15f, 0.15f, 0.15f);
-            sprayMod += sprayModRate;
+            transform.localScale = transform.localScale + new Vector3(0.1f, 0.0f, 0.0f);
+
 
         }
         if (inertia < 0.0f)
         {
-            transform.localScale = transform.localScale - new Vector3(0.01f, 0.0f, 0.0f);
+            transform.localScale = transform.localScale - new Vector3(0.01f, 0.08f, 0.08f);
             acceleration += 1.5f;
-            sprayMod -= sprayModRate;
+
         }
         if (transform.position.y < -1)
         {

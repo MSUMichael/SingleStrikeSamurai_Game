@@ -9125,15 +9125,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: bloodScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: bloodScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: bloodScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: bossDeathSound
@@ -31810,15 +31810,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: bloodScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: bloodScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: bloodScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: EnemyDeathSound
