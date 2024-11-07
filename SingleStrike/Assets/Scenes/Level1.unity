@@ -1713,6 +1713,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 446152, guid: 6d1bad2f4a7df1d49a1da772b3ed1ebb, type: 3}
   m_PrefabInstance: {fileID: 108230946}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &108320175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108320176}
+  m_Layer: 0
+  m_Name: BloodSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108320176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108320175}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.262, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 667717003}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &109215272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9093,9 +9124,65 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: bossDeathSound
       value: 
       objectReference: {fileID: 8300000, guid: 638b0f201cf32e942a86e0506e749a18, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab0
+      value: 
+      objectReference: {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab1
+      value: 
+      objectReference: {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab2
+      value: 
+      objectReference: {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab3
+      value: 
+      objectReference: {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab4
+      value: 
+      objectReference: {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab5
+      value: 
+      objectReference: {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab0
+      value: 
+      objectReference: {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab1
+      value: 
+      objectReference: {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab2
+      value: 
+      objectReference: {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
     - target: {fileID: 2658247688305571188, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: m_Name
       value: BossV2 1
@@ -9110,7 +9197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10171,6 +10258,112 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 573331713716802849, guid: d017b2728af50c24ca730e6a0cfb80ab, type: 3}
   m_PrefabInstance: {fileID: 657221112}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &667716994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6238620351807758515, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+  m_PrefabInstance: {fileID: 8819033942557292038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &667717003 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6764363229410261513, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+  m_PrefabInstance: {fileID: 8819033942557292038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &667717004
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667716994}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &673744794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14795,7 +14988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: 60.4
       objectReference: {fileID: 0}
     - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14803,7 +14996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30341,6 +30534,139 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 850649989193942044, guid: ae358aa425fe140409d8a560f4492730, type: 3}
   m_PrefabInstance: {fileID: 2064707365}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2065266458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bossDeathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 638b0f201cf32e942a86e0506e749a18, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab0
+      value: 
+      objectReference: {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab1
+      value: 
+      objectReference: {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab2
+      value: 
+      objectReference: {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab3
+      value: 
+      objectReference: {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab4
+      value: 
+      objectReference: {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodPoolPrefab5
+      value: 
+      objectReference: {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab0
+      value: 
+      objectReference: {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab1
+      value: 
+      objectReference: {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
+    - target: {fileID: 610973783671838323, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: bloodSprayPrefab2
+      value: 
+      objectReference: {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
+    - target: {fileID: 2658247688305571188, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_Name
+      value: BossV2 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658247688305571188, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944976261928237105, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2010983557}
+    - target: {fileID: 7882887616941976469, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882887616941976469, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
 --- !u!1001 &2070746789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31482,13 +31808,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: EnemyDeathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 638b0f201cf32e942a86e0506e749a18, type: 3}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodSpawnPoint
+      value: 
+      objectReference: {fileID: 108320176}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodPoolPrefab0
+      value: 
+      objectReference: {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodPoolPrefab1
+      value: 
+      objectReference: {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodPoolPrefab2
+      value: 
+      objectReference: {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodPoolPrefab3
+      value: 
+      objectReference: {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodSprayPrefab0
+      value: 
+      objectReference: {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodSprayPrefab1
+      value: 
+      objectReference: {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
+    - target: {fileID: 4943748728716511203, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: bloodSprayPrefab2
+      value: 
+      objectReference: {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
     - target: {fileID: 6238620351807758515, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_Name
       value: EnemyV3
       objectReference: {fileID: 0}
     - target: {fileID: 6764363229410261513, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77
+      value: 130.8
       objectReference: {fileID: 0}
     - target: {fileID: 6764363229410261513, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31530,10 +31904,20 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8345316867549966836, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6764363229410261513, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 108320176}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6238620351807758515, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 667717004}
   m_SourcePrefab: {fileID: 100100000, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -31545,6 +31929,7 @@ SceneRoots:
   - {fileID: 1570903816}
   - {fileID: 963194228}
   - {fileID: 617448741}
+  - {fileID: 2065266458}
   - {fileID: 8819033942557292038}
   - {fileID: 1020500585}
   - {fileID: 468394238}
