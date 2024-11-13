@@ -41,4 +41,10 @@ public class EnemyAnimationController : MonoBehaviour
     {
         Debug.Log("Enemy attack hit!");
     }
+
+    public void TriggerBlockAnimation()
+    {
+        animator.SetTrigger("Block");
+    }
+
 }

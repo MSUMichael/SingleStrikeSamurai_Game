@@ -5,10 +5,18 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
     public Animator animator;
+    public AudioClip deathSound;  
+    private AudioSource audioSource;
 
     void Start()
     {
         currentHealth = maxHealth;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void TakeDamage(int damageAmount)
@@ -18,41 +26,50 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            Debug.Log("Calling Die() method");  // Log to check
             Die();
         }
     }
 
     private void Die()
     {
-        // Destroy the enemy GameObject or trigger a death animation
         Debug.Log("Enemy died.");
+
         LockPosition();
         animator.SetTrigger("Die");
-        GetComponent<Collider>().enabled = false; // Disable the enemy's collider to prevent further interactions
-        this.enabled = false;
+
+  
+        GetComponent<Collider>().enabled = false;
+
         
-        Destroy(gameObject, 15f);
+        if (audioSource != null && deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+            Debug.Log("Death sound should be playing now.");
+        }
+
+        
+        Destroy(gameObject, deathSound.length);
     }
+
     private void LockPosition()
     {
-        // Disable any Rigidbody to prevent further movement
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = true; // Make Rigidbody kinematic to stop physics from affecting it
+            rb.isKinematic = true;
         }
 
-        // Optionally, disable other scripts that could affect the transform
+        // Optionally disable other scripts
         MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour script in scripts)
         {
-            if (script != this) // Do not disable the current EnemyHealth script
+            if (script != this)
             {
                 script.enabled = false;
             }
         }
 
-        // Optionally, freeze the transform by disabling all constraints
-        transform.hasChanged = false; // Reset any pending changes to the transform
+        transform.hasChanged = false;
     }
 }
