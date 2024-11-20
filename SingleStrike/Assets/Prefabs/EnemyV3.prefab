@@ -1925,11 +1925,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506dd08e9dca6d846a4f1d1163ed70c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 690
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506dd08e9dca6d846a4f1d1163ed70c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 506dd08e9dca6d846a4f1d1163ed70c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2112,11 +2112,8 @@ MonoBehaviour:
   crouchDetectionRange: 12
   attackRange: 1.7
   fieldOfViewAngle: 90
-  waitTimeAtWaypoint: 2
-  enemyAnimationController: {fileID: 38895608288431985}
-  playerMovement: {fileID: 0}
-  waypoint1: {fileID: 0}
-  waypoint2: {fileID: 0}
+  weaponDelay: 1
+  attackCooldown: 2
 --- !u!114 &38895608288431985
 MonoBehaviour:
   m_ObjectHideFlags: 0
