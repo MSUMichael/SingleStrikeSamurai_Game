@@ -18,7 +18,12 @@ public class PlayerMovement2 : MonoBehaviour
     private Rigidbody rb;
     public bool hasRotatedLeft = false;
     public bool hasRotatedRight = true;
-    
+    private AudioSource audioSource;
+    public GameObject footstep;
+    public GameObject run;
+    public AudioClip jumpSound;
+
+
 
     // Reference to AnimationStateController
     public AnimationStateController2 animController;
@@ -32,9 +37,12 @@ public class PlayerMovement2 : MonoBehaviour
 
     void Start()
     {
+        footstep.SetActive(false);
+        run.SetActive(false);
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         originalHeight = transform.localScale.y;
-        oldMoveSpeed = moveSpeed;   
+        oldMoveSpeed = moveSpeed;
     }
 
     public void Update()
@@ -54,7 +62,9 @@ public class PlayerMovement2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isCrouching)
         {
             Debug.Log("Jump key pressed");
+            audioSource.PlayOneShot(jumpSound);
             Jump();
+
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
@@ -73,7 +83,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         // Handle Movement Input in FixedUpdate to apply forces properly
         Move();
-        
+
     }
 
     private void Move()
@@ -108,30 +118,34 @@ public class PlayerMovement2 : MonoBehaviour
 
             // Sync walking or running animations
             animController.SetWalkingState(true);
+            footsteps();
         }
         else
         {
             // Stop horizontal movement when idle
             rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
-            animController.SetWalkingState(false);  // Stop walking
+            animController.SetWalkingState(false);
+            stopfootsteps(); // Stop walking
         }
     }
 
     private void Jump()
     {
+
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        animController.SetJumpingState(true);  // Trigger jumping animation
-        if (soundManager != null) soundManager.PlayJumpSound();
+        animController.SetJumpingState(true);
+        // Trigger jumping animation
+        //sets jump sound active
     }
 
     private void Crouch()
     {
-        
+
         moveSpeed = crouchSpeed;
         isCrouching = true;
         animController.SetCrouchingState(true);  // Trigger crouching animation
     }
-    
+
     private void StandUp()
     {
         transform.localScale = new Vector3(transform.localScale.x, originalHeight, transform.localScale.z);
@@ -145,6 +159,7 @@ public class PlayerMovement2 : MonoBehaviour
         isSprinting = true;
         Debug.Log("Started Sprinting");
         animController.SetRunningState(true);
+        runsteps();
     }
 
     private void StopSprinting()
@@ -152,7 +167,7 @@ public class PlayerMovement2 : MonoBehaviour
         isSprinting = false;
         Debug.Log("Stopped Sprinting");
         animController.SetRunningState(false);
-
+        stoprunsteps();
     }
 
 
@@ -172,5 +187,28 @@ public class PlayerMovement2 : MonoBehaviour
             isGrounded = false;
         }
     }
-    
+    void footsteps()
+    {
+        if(isSprinting == false)
+        {
+            footstep.SetActive(true);
+        }
+        else if(isSprinting)
+        {
+            footstep.SetActive(false);
+        }
+    }
+    void stopfootsteps()
+    {
+      
+            footstep.SetActive(false);
+    }
+    void runsteps()
+    {
+        run.SetActive(true);
+    }
+    void stoprunsteps()
+    {
+        run.SetActive(false);
+    }
 }
