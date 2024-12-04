@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+//Written by ryan reisdorf
 
 public class Health : MonoBehaviour
 {

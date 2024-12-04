@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Written by ryan reisdorf
 public class PlayerBlocking : MonoBehaviour
 {
     public bool isBlocking = false; // Tracks if the player is currently blocking
@@ -81,7 +81,7 @@ public class PlayerBlocking : MonoBehaviour
         if (sparkPrefab != null && sparkEmitter != null)
         {
             GameObject sparks = Instantiate(sparkPrefab, sparkEmitter.position, sparkEmitter.rotation);
-            Destroy(sparks, 0.2f); // Destroy the sparks after 0.5 seconds
+            Destroy(sparks, 0.2f); // Destroy the sparks after 0.2 seconds
         }
     }
 }

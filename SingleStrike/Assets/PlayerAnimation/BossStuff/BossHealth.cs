@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+//Written by ryan reisdorf
 
 public class BossHealth : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class BossHealth : MonoBehaviour
     private int rndSprayRot;
     private int rndPoolRot;
     public Vector3 bloodScale;
+    //Written by ryan reisdorf
 
     void Start()
     {
