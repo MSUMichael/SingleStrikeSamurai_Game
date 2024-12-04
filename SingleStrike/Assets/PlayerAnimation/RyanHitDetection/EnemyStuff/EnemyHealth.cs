@@ -5,8 +5,9 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
     public Animator animator;
-    public AudioClip deathSound;  
+    public AudioClip deathSound;
     private AudioSource audioSource;
+    private bool isDead = false;
 
     void Start()
     {
@@ -31,24 +32,27 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+
+
     private void Die()
     {
         Debug.Log("Enemy died.");
 
         LockPosition();
         animator.SetTrigger("Die");
+        Debug.Log("Enemy is dying.");
 
-  
+
         GetComponent<Collider>().enabled = false;
 
-        
+
         if (audioSource != null && deathSound != null)
         {
             audioSource.PlayOneShot(deathSound);
             Debug.Log("Death sound should be playing now.");
         }
 
-        
+
         Destroy(gameObject, deathSound.length);
     }
 
