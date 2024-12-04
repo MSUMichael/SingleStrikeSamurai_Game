@@ -1,5 +1,6 @@
 using UnityEngine;
-
+//Written by ryan reisdorf
+//scrapped not in final game but was cool imo
 public class AssassinationSystem : MonoBehaviour
 {
     public Transform playerTransform;        // Player transform
