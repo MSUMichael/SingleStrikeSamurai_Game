@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:SingleStrike/Assets/Dowloaded/Blood decal pack/blood/prefab/BloodSprayPrefabs.meta
 guid: 312b27b8387b8a540bc56bf84849b3fd
+========
+guid: b6d2ea999d7522d4695fdfe295022444
+>>>>>>>> Steps:SingleStrike/Assets/Sounds.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
