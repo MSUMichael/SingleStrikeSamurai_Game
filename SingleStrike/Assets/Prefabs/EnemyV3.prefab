@@ -2036,7 +2036,7 @@ Animator:
   m_GameObject: {fileID: 6238620351807758515}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 506dd08e9dca6d846a4f1d1163ed70c0, type: 3}
-  m_Controller: {fileID: 9100000, guid: c14641494d86e0c409d208b81ee83f62, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7666097e42b3d3e40897577f5e1bde95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2109,10 +2109,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 20
+  chaseRange: 10
   crouchDetectionRange: 12
   attackRange: 1.7
   fieldOfViewAngle: 90
   waitTimeAtWaypoint: 2
+  deathSound: {fileID: 0}
   enemyAnimationController: {fileID: 38895608288431985}
   playerMovement: {fileID: 0}
   waypoint1: {fileID: 0}
@@ -2164,20 +2166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   animator: {fileID: 1314942502096797052}
-  EnemyDeathSound: {fileID: 8300000, guid: 638b0f201cf32e942a86e0506e749a18, type: 3}
-  bloodSprayPrefabs:
-  - {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
-  - {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
-  - {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
-  bloodPoolPrefabs:
-  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
-  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
-  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
-  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
-  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
-  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
-  bloodSpawnPoint: {fileID: 4378530202642112243}
-  bloodScale: {x: 0.2, y: 0.2, z: 0.2}
+  deathSound: {fileID: 0}
 --- !u!114 &5698797176076776623
 MonoBehaviour:
   m_ObjectHideFlags: 0
