@@ -1,48 +1,40 @@
 using UnityEngine;
 using System.Collections;
+//Written by ryan reisdorf
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float detectionRange = 5f;
-    public float chaseRange = 10f;
     public float crouchDetectionRange = 2f;
     public float attackRange = 2f;
     public float fieldOfViewAngle = 90f;
-    public float waitTimeAtWaypoint = 2f;
+    public float weaponDelay = 1f; // Delay before enemy starts moving after taking out the weapon
+    public float attackCooldown = 1f;
 
     private Rigidbody rb;
     private Vector3 movement;
     private Transform targetPlayer;
     private bool playerInRange = false;
     private bool playerInAttackRange = false;
-    private bool inRange = false;
     private bool weaponTakenOut = false;
     private bool isWaiting = false;
-    private bool hasBlocked = false;
 
-    public AudioClip deathSound;
-    private AudioSource audioSource;
-    private Animator animator;
-
-    public EnemyAnimationController enemyAnimationController;
-    public PlayerMovement2 playerMovement;
+    private EnemyAnimationController enemyAnimationController;
+    private PlayerMovement2 playerMovement;
     private BoxCollider boxCollider;
-
-    public Transform waypoint1;
-    public Transform waypoint2;
-    private Transform currentTargetWaypoint;
-    private bool isPatrolling = true;
-    private Vector3 lastPosition;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        enemyAnimationController = GetComponent<EnemyAnimationController>();
 
         Debug.Log("Enemy initialized.");
+
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -52,9 +44,6 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("No player object found with tag 'Player'");
         }
-
-        currentTargetWaypoint = waypoint1;
-        lastPosition = transform.position;
     }
 
     void Update()
@@ -65,13 +54,9 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (targetPlayer != null && !inRange && !isWaiting)
+        if (targetPlayer != null && !playerInAttackRange && !isWaiting)
         {
-            MoveEnemy();
-        }
-        else if (isPatrolling && !playerInRange && !isWaiting)
-        {
-            Patrol();
+            ChasePlayer();
         }
         else
         {
@@ -82,112 +67,148 @@ public class Enemy : MonoBehaviour
         UpdateFacingDirection();
     }
 
+    /// <summary>
+    /// Detects the player and sets the target if within range and field of view.
+    /// </summary>
     void DetectPlayer()
     {
+        if (playerMovement == null) return;
+
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
         if (playerObject != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerObject.transform.position);
             float currentDetectionRange = playerMovement.isCrouching ? crouchDetectionRange : detectionRange;
 
-
-            if (distanceToPlayer < currentDetectionRange && IsPlayerInFront(playerObject.transform))
+            if (distanceToPlayer < currentDetectionRange)
             {
                 targetPlayer = playerObject.transform;
-                playerInRange = true;
+
+                if (!playerInRange)
+                {
+                    playerInRange = true;
+
+                    if (!weaponTakenOut)
+                    {
+                        Debug.Log("Playing weapon take-out animation.");
+                        enemyAnimationController.TriggerTakeOutWeaponAnimation();
+                        weaponTakenOut = true;
+                        StartCoroutine(WaitBeforeChasing());
+                    }
+                }
+
                 Vector3 direction = (targetPlayer.position - transform.position).normalized;
                 movement = new Vector3(direction.x, 0f, direction.z);
-
-                if (!weaponTakenOut)
-                {
-                    Debug.Log("Playing weapon take-out animation.");
-                    enemyAnimationController.TriggerTakeOutWeaponAnimation();
-                    weaponTakenOut = true;
-                    StartCoroutine(WaitBeforeMoving());
-                }
             }
-            // Stop chasing and return to patrol if player moves beyond chase range
-            else if (playerInRange && distanceToPlayer > chaseRange)
+            else
             {
-                Debug.Log("Player is out of chase range. Returning to patrol.");
-                targetPlayer = null;
-                movement = Vector3.zero;
-                playerInRange = false;
-                weaponTakenOut = false;
-                isPatrolling = true;
+                ResetEnemyState();
             }
         }
-        else if (playerInRange)
+        else
         {
-
-            targetPlayer = null;
-            movement = Vector3.zero;
-            playerInRange = false;
-            weaponTakenOut = false;
-            isPatrolling = true;
+            ResetEnemyState();
         }
     }
 
-    void MoveEnemy()
+    /// <summary>
+    /// Moves the enemy towards the player.
+    /// </summary>
+    void ChasePlayer()
     {
-        if (movement != Vector3.zero)
-        {
-            rb.velocity = movement * moveSpeed;
-            enemyAnimationController.SetWalkingState(true);
-            isPatrolling = false;
-        }
+        if (targetPlayer == null) return;
+
+        Vector3 direction = (targetPlayer.position - transform.position).normalized;
+        movement = new Vector3(direction.x, 0f, direction.z);
+
+        rb.velocity = movement * moveSpeed;
+        enemyAnimationController.SetWalkingState(true);
     }
 
-    private IEnumerator BlockAndThenAttack()
-    {
-        inRange = true; // Prevents other actions during blocking
-        enemyAnimationController.TriggerBlockAnimation(); // Start blocking animation
-
-        // Wait for the block animation to finish
-        yield return new WaitForSeconds(2f); // Adjust this duration based on the length of the block animation
-
-        inRange = false; // Allow other actions after blocking
-        enemyAnimationController.TriggerAttackAnimation(); // Start attacking after blocking
-    }
-
+    /// <summary>
+    /// Checks if the player is within attack range and triggers attack if so.
+    /// </summary>
     void CheckAttackRange()
     {
         if (targetPlayer != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, targetPlayer.position);
 
-            // Check if the enemy is within attack range
             if (distanceToPlayer < attackRange)
             {
                 if (!playerInAttackRange)
                 {
                     playerInAttackRange = true;
-                    inRange = true;
-
-                    // If the enemy has blocked already, go directly to attacking
-                    if (!hasBlocked)
-                    {
-                        StartCoroutine(BlockAndThenAttack());
-                        hasBlocked = true; // Prevents further blocking
-                    }
-                    else
-                    {
-                        enemyAnimationController.TriggerAttackAnimation(); // Directly attack
-                    }
-
-                    // Stop movement as the enemy is close enough to attack
-                    rb.velocity = Vector3.zero;
+                    StartCoroutine(ContinuousAttack());
                 }
             }
             else
             {
-                // When the player moves out of attack range, reset attack state and allow movement
-                if (playerInAttackRange)
-                {
-                    playerInAttackRange = false;
-                    inRange = false;
-                    enemyAnimationController.SetWalkingState(true); // Resume walking animation if needed
-                }
+                playerInAttackRange = false;
+            }
+        }
+    }
+
+    IEnumerator ContinuousAttack()
+    {
+        while (playerInAttackRange)
+        {
+            // Trigger the attack animation
+            enemyAnimationController.TriggerAttackAnimation();
+
+            // Wait for the attack animation cooldown (adjust as needed)
+            yield return new WaitForSeconds(attackCooldown);
+        }
+    }
+
+
+    /// <summary>
+    /// Resets the enemy's state when the player is no longer detected.
+    /// </summary>
+    void ResetEnemyState()
+    {
+        playerInRange = false;
+        targetPlayer = null;
+        movement = Vector3.zero;
+        weaponTakenOut = false;
+    }
+
+    /// <summary>
+    /// Determines if the player is within the enemy's field of view.
+    /// </summary>
+    /// <param name="playerTransform">The player's transform.</param>
+    /// <returns>True if the player is in front; otherwise, false.</returns>
+    bool IsPlayerInFront(Transform playerTransform)
+    {
+        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+        float dotProduct = Vector3.Dot(transform.forward, directionToPlayer);
+        float clampedDotProduct = Mathf.Clamp(dotProduct, -1f, 1f);
+        float angleToPlayer = Mathf.Acos(clampedDotProduct) * Mathf.Rad2Deg;
+
+        return angleToPlayer < fieldOfViewAngle / 2;
+    }
+
+    /// <summary>
+    /// Updates the enemy's facing direction based on the player's position.
+    /// </summary>
+    void UpdateFacingDirection()
+    {
+        if (targetPlayer != null)
+        {
+            // Direction vector to the player
+            Vector3 directionToPlayer = (targetPlayer.position - transform.position).normalized;
+
+            // Determine if the player is to the right (positive X) or left (negative X) of the enemy
+            if (directionToPlayer.x > 0)
+            {
+                // Player is to the right, set rotation to face +X (Y = 90°)
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if (directionToPlayer.x < 0)
+            {
+                // Player is to the left, set rotation to face -X (Y = -90°)
+                transform.rotation = Quaternion.Euler(0, -90, 0);
             }
         }
     }
@@ -195,96 +216,68 @@ public class Enemy : MonoBehaviour
 
 
 
-
-
-    public void Die()
-    {
-        animator.SetTrigger("Die");
-        Debug.Log("Enemy died. Attempting to play death sound.");
-
-        // Play death sound
-        if (audioSource != null && deathSound != null)
-        {
-            audioSource.clip = deathSound;
-            audioSource.Play();
-            Debug.Log("Death sound played.");
-        }
-
-        DisableEnemyComponents();
-        StartCoroutine(DestroyAfterDeathSound());
-    }
-
-    void DisableEnemyComponents()
-    {
-        rb.velocity = Vector3.zero;
-        this.enabled = false;
-        if (boxCollider != null)
-            boxCollider.enabled = false;
-    }
-
-    IEnumerator DestroyAfterDeathSound()
-    {
-        yield return new WaitForSeconds(audioSource.clip.length);
-        Destroy(gameObject);
-    }
-
-    public void OnPlayerAttack()
-    {
-        Die();
-    }
-
-    bool IsPlayerInFront(Transform playerTransform)
-    {
-        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-        float dotProduct = Vector3.Dot(transform.forward, directionToPlayer);
-        float angleToPlayer = Mathf.Acos(Mathf.Clamp(dotProduct, -1f, 1f)) * Mathf.Rad2Deg;
-        return angleToPlayer < fieldOfViewAngle / 2;
-    }
-
-    IEnumerator WaitBeforeMoving()
+    /// <summary>
+    /// Coroutine to wait before the enemy starts chasing after taking out the weapon.
+    /// </summary>
+    IEnumerator WaitBeforeChasing()
     {
         isWaiting = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(weaponDelay);
         isWaiting = false;
     }
 
-    void Patrol()
+    /// <summary>
+    /// Visualizes enemy detection ranges in the Unity Editor.
+    /// </summary>
+    void OnDrawGizmosSelected()
     {
-        if (currentTargetWaypoint == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
 
-        Vector3 direction = (currentTargetWaypoint.position - transform.position).normalized;
-        rb.velocity = direction * moveSpeed;
-        enemyAnimationController.SetWalkingState(true);
-        Debug.Log("Walking animation should be playing.");
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, crouchDetectionRange);
 
-        float distanceToWaypoint = Vector3.Distance(transform.position, currentTargetWaypoint.position);
-        if (distanceToWaypoint < 0.5f)
-        {
-            StartCoroutine(WaitAtWaypoint());
-        }
+        Gizmos.color = Color.green;
+        DrawFieldOfViewGizmos();
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    IEnumerator WaitAtWaypoint()
+    /// <summary>
+    /// Draws the enemy's field of view in the Unity Editor.
+    /// </summary>
+    void DrawFieldOfViewGizmos()
     {
-        isWaiting = true;
-        rb.velocity = Vector3.zero;
-        enemyAnimationController.SetWalkingState(false);
-        yield return new WaitForSeconds(waitTimeAtWaypoint);
-        isWaiting = false;
+        Vector3 forward = transform.forward;
 
-        currentTargetWaypoint = currentTargetWaypoint == waypoint1 ? waypoint2 : waypoint1;
+        Quaternion leftFOVRotation = Quaternion.AngleAxis(-fieldOfViewAngle / 2, Vector3.up);
+        Quaternion rightFOVRotation = Quaternion.AngleAxis(fieldOfViewAngle / 2, Vector3.up);
+
+        Vector3 leftFOVDirection = leftFOVRotation * forward;
+        Vector3 rightFOVDirection = rightFOVRotation * forward;
+
+        Gizmos.DrawLine(transform.position, transform.position + leftFOVDirection * detectionRange);
+        Gizmos.DrawLine(transform.position, transform.position + rightFOVDirection * detectionRange);
+
+        DrawFOVArc();
     }
 
-    void UpdateFacingDirection()
+    /// <summary>
+    /// Draws an arc representing the enemy's field of view in the Unity Editor.
+    /// </summary>
+    void DrawFOVArc()
     {
-        Vector3 movementDirection = transform.position - lastPosition;
-        if (movementDirection.sqrMagnitude > 0.001f)
+        int segments = 30;
+        float angleStep = fieldOfViewAngle / segments;
+        Vector3 previousPoint = transform.position + Quaternion.Euler(0, -fieldOfViewAngle / 2, 0) * transform.forward * detectionRange;
+
+        for (int i = 1; i <= segments; i++)
         {
-            if (movementDirection.x > 0)
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            else if (movementDirection.x < 0)
-                transform.rotation = Quaternion.Euler(0, -90, 0);
+            float currentAngle = -fieldOfViewAngle / 2 + i * angleStep;
+            Vector3 nextPoint = transform.position + Quaternion.Euler(0, currentAngle, 0) * transform.forward * detectionRange;
+            Gizmos.DrawLine(previousPoint, nextPoint);
+            previousPoint = nextPoint;
         }
-        lastPosition = transform.position;
     }
 }

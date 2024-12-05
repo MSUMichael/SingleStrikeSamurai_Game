@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+//Written by ryan reisdorf
 
 public class BossAI : MonoBehaviour
 {

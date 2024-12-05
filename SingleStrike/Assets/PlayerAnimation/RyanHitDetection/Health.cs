@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+//Written by ryan reisdorf
 
 public class Health : MonoBehaviour
 {
@@ -51,6 +52,18 @@ public class Health : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;
         }
 
+        // Wait for 4 seconds before loading the title screen
+        Invoke("LoadTitleScreen", 4f);
+
+        // Destroy the player object after 4 seconds
         Destroy(gameObject, 4f);
     }
+
+    private void LoadTitleScreen()
+    {
+        // Assuming you are using Unity's SceneManager to load the title screen
+        // If you have a scene called "TitleScreen", use this:
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScreen");
+    }
+
 }

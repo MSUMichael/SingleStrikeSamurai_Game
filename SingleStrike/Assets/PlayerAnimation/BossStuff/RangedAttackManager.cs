@@ -1,4 +1,5 @@
 using UnityEngine;
+//Written by ryan reisdorf
 
 public class RangedAttackManager : MonoBehaviour
 {

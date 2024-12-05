@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Written by ryan reisdorf
 
 public class SmoothCameraFollow : MonoBehaviour
 {

@@ -465,6 +465,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2344501622301313988, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -530,6 +534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossV2 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2658247688305571188, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3434045967056547790, guid: 976faba5f47af194f84fb254b4d3a845, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -588,6 +596,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3118547747457278378, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
+      propertyPath: attackCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118547747457278378, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 0}
@@ -597,11 +609,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6238620351807758515, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6764363229410261513, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6764363229410261513, guid: 92fdb45dfe4347f4bbef8359bfbca6ff, type: 3}
       propertyPath: m_LocalPosition.y

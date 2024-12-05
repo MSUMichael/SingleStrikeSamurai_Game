@@ -453,8 +453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67acd873e2fabed449813a3786d2dbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatSound: {fileID: 8300000, guid: c6a6bcbe219ceb04f981fc11162e63e5, type: 3}
-  audioSource: {fileID: 0}
 --- !u!1001 &32007213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14496,6 +14494,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14576,14 +14575,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f0ed74c19ed93418d9d42784e91802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2010983557}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 3, z: -6}
+  offset: {x: 0, y: 3, z: -8}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14644,6 +14643,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7198a4246b1fbd4ba58fd864f82e0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  verticalSpeed: 5
+  rotationSpeed: 50
 --- !u!1001 &965573379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15376,7 +15390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344501622301313988, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: maxHealth
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3525147964932308946, guid: 2dfde42d9a02a8d4ba9a4eea4ffaf2e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29139,8 +29153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd51deed03982d438e0ab654c979ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passiveSound: {fileID: 8300000, guid: 749428170bd956149a4ede7c65dbb8b6, type: 3}
-  audioSource: {fileID: 0}
 --- !u!1001 &1890335212
 PrefabInstance:
   m_ObjectHideFlags: 0
