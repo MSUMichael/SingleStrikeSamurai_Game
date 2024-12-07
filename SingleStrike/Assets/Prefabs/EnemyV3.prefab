@@ -927,74 +927,6 @@ Transform:
   - {fileID: 291101270365107115}
   m_Father: {fileID: 1277327847122978984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4620365628095561868
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2416802136619248718}
-  - component: {fileID: 4251518291692781904}
-  - component: {fileID: 3185023213634034280}
-  m_Layer: 10
-  m_Name: EnemyAttackHitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2416802136619248718
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4620365628095561868}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.098000064}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6764363229410261513}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4251518291692781904
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4620365628095561868}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5751991, z: 1.3005784}
-  m_Center: {x: -3.2772577e-15, y: 1.2124004, z: 0.7306164}
---- !u!114 &3185023213634034280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4620365628095561868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df7396dacdaa7fe488f35830ca26fa6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  animator: {fileID: 1314942502096797052}
 --- !u!1 &4681007182800500834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,6 +1757,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6764363229410261513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1495244551425552506
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6764363229410261513}
+    m_Modifications:
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.098000064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103717434769893906, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1314942502096797052}
+    - target: {fileID: 6115601254040301814, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+      propertyPath: m_Name
+      value: EnemyAttackHitbox
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+--- !u!4 &2416802136619248718 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3839908305536719924, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+  m_PrefabInstance: {fileID: 1495244551425552506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4620365628095561868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6115601254040301814, guid: 5a4a74c7d603e884681751c8ab69e9c4, type: 3}
+  m_PrefabInstance: {fileID: 1495244551425552506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6143585569735205532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2109,11 +2112,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 20
+  chaseRange: 10
   crouchDetectionRange: 12
   attackRange: 1.7
   fieldOfViewAngle: 90
+<<<<<<< HEAD
   weaponDelay: 1
   attackCooldown: 2
+=======
+  waitTimeAtWaypoint: 2
+  deathSound: {fileID: 0}
+  enemyAnimationController: {fileID: 38895608288431985}
+  playerMovement: {fileID: 0}
+  waypoint1: {fileID: 0}
+  waypoint2: {fileID: 0}
+>>>>>>> Slava2
 --- !u!114 &38895608288431985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2161,20 +2174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   animator: {fileID: 1314942502096797052}
-  EnemyDeathSound: {fileID: 8300000, guid: 638b0f201cf32e942a86e0506e749a18, type: 3}
-  bloodSprayPrefabs:
-  - {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
-  - {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
-  - {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
-  bloodPoolPrefabs:
-  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
-  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
-  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
-  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
-  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
-  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
-  bloodSpawnPoint: {fileID: 4378530202642112243}
-  bloodScale: {x: 0.2, y: 0.2, z: 0.2}
+  deathSound: {fileID: 0}
 --- !u!114 &5698797176076776623
 MonoBehaviour:
   m_ObjectHideFlags: 0

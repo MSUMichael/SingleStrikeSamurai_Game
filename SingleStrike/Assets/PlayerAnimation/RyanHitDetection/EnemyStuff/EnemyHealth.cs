@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 100;
     public static int currentHealth;
     public Animator animator;
+<<<<<<< HEAD
     public AudioClip EnemyDeathSound; // Sound effect for boss dying
     private AudioSource audioSource; // Reference to the AudioSource
 
@@ -176,6 +177,11 @@ public class EnemyHealth : MonoBehaviour
     private int rndPool;
     private int rndSprayRot;
     private int rndPoolRot;
+=======
+    public AudioClip deathSound;
+    private AudioSource audioSource;
+    private bool isDead = false;
+>>>>>>> Slava2
 
     void Start()
     {
@@ -193,11 +199,14 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+
+
     private void Die()
     {
         Debug.Log("Enemy died.");
         LockPosition();
         animator.SetTrigger("Die");
+<<<<<<< HEAD
         GetComponent<Collider>().enabled = false; // Disable the enemy's collider to prevent further interactions
         this.enabled = false;
 
@@ -205,6 +214,22 @@ public class EnemyHealth : MonoBehaviour
         EnemyBloodPool();
 
         Destroy(gameObject, 15f);
+=======
+        Debug.Log("Enemy is dying.");
+
+
+        GetComponent<Collider>().enabled = false;
+
+
+        if (audioSource != null && deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+            Debug.Log("Death sound should be playing now.");
+        }
+
+
+        Destroy(gameObject, deathSound.length);
+>>>>>>> Slava2
     }
 
     private void LockPosition()
