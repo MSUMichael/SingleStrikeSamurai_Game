@@ -177,11 +177,11 @@ public class EnemyHealth : MonoBehaviour
     private int rndPool;
     private int rndSprayRot;
     private int rndPoolRot;
-=======
+
     public AudioClip deathSound;
-    private AudioSource audioSource;
+    private AudioSource audioSource2;
     private bool isDead = false;
->>>>>>> Slava2
+
 
     void Start()
     {
@@ -206,7 +206,7 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("Enemy died.");
         LockPosition();
         animator.SetTrigger("Die");
-<<<<<<< HEAD
+
         GetComponent<Collider>().enabled = false; // Disable the enemy's collider to prevent further interactions
         this.enabled = false;
 
@@ -214,7 +214,7 @@ public class EnemyHealth : MonoBehaviour
         EnemyBloodPool();
 
         Destroy(gameObject, 15f);
-=======
+
         Debug.Log("Enemy is dying.");
 
 
@@ -229,7 +229,7 @@ public class EnemyHealth : MonoBehaviour
 
 
         Destroy(gameObject, deathSound.length);
->>>>>>> Slava2
+
     }
 
     private void LockPosition()
