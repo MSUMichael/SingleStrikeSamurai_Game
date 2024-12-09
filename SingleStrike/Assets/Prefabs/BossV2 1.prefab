@@ -388,7 +388,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bossAnimator: {fileID: 4760548575881153542}
   detectionRange: 20
-  stopAttackRange: 15
+  stopAttackRange: 13
   movementSpeed: 3
   meleeAttackRange: 1.5
 --- !u!114 &6225420243736286988
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 1415740832984169338, guid: 354686ccb93fa0945b54676ac8f184e4, type: 3}
   shootPoint: {fileID: 7729734104450148188}
-  arrowForce: 20
+  arrowForce: 10
   bowShootSound: {fileID: 8300000, guid: 4a57bdf23ab953045bbe31edb429bbd8, type: 3}
   bowLoadSound: {fileID: 8300000, guid: 280224fc4e5b26d4aa13a0b80222ff76, type: 3}
 --- !u!54 &7882887616941976469
@@ -465,7 +465,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2658247688305571188}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -482,7 +482,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 108
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!65 &8308354458504143696
 BoxCollider:
@@ -538,12 +538,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88638d04a7ef3244d904e41dbeed248a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   animator: {fileID: 4760548575881153542}
-  bossDeathSound: {fileID: 0}
-  bloodSprayPrefab: {fileID: 8190764382944567406, guid: 0b50c2d2de7742144809732caa71b280, type: 3}
-  bloodPoolPrefab: {fileID: 0}
+  bossDeathSound: {fileID: 8300000, guid: 638b0f201cf32e942a86e0506e749a18, type: 3}
+  bloodSprayPrefab0: {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
+  bloodSprayPrefab1: {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
+  bloodSprayPrefab2: {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
+  bloodPoolPrefab0: {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  bloodPoolPrefab1: {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  bloodPoolPrefab2: {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  bloodPoolPrefab3: {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
   bloodSpawnPoint: {fileID: 8644871134692838629}
+  bloodScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &5573040305513919350
 MonoBehaviour:
   m_ObjectHideFlags: 0

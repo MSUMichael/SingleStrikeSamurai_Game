@@ -3,7 +3,13 @@ guid: 8cd51deed03982d438e0ab654c979ade
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - passiveSound1: {fileID: 8300000, guid: 054205af35efcb942be9610445479a7c, type: 3}
+  - passiveSound2: {fileID: 8300000, guid: bec1cfb465efc7a41bd5ccbac5b6f2a2, type: 3}
+  - passiveSound3: {fileID: 8300000, guid: 660790bb19a97eb4581a05d90c81f369, type: 3}
+  - passiveSound4: {fileID: 8300000, guid: c6a6bcbe219ceb04f981fc11162e63e5, type: 3}
+  - dramaticDefault: {fileID: 8300000, guid: c6a6bcbe219ceb04f981fc11162e63e5, type: 3}
+  - audioSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

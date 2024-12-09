@@ -2039,12 +2039,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  detectionRange: 20
+  detectionRange: 25
   crouchDetectionRange: 12
   attackRange: 1.7
   fieldOfViewAngle: 90
   weaponDelay: 1
-  attackCooldown: 2
+  attackCooldown: 3
 --- !u!114 &6110181020323954024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2106,6 +2106,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
   bloodSpawnPoint: {fileID: 9108731999152842396}
   bloodScale: {x: 0.2, y: 0.2, z: 0.2}
+  deathSound: {fileID: 8300000, guid: eaaaa2a25c7a3b14fb12e8341a869b02, type: 3}
 --- !u!114 &6866499283229189689
 MonoBehaviour:
   m_ObjectHideFlags: 0

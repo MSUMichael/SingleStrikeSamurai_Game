@@ -2126,11 +2126,8 @@ MonoBehaviour:
   crouchDetectionRange: 12
   attackRange: 1.7
   fieldOfViewAngle: 90
-  waitTimeAtWaypoint: 2
-  enemyAnimationController: {fileID: 7001850857973340102}
-  playerMovement: {fileID: 0}
-  waypoint1: {fileID: 0}
-  waypoint2: {fileID: 0}
+  weaponDelay: 1
+  attackCooldown: 1
 --- !u!114 &7001850857973340102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,6 +2175,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   animator: {fileID: 5597447117475535593}
+  EnemyDeathSound: {fileID: 8300000, guid: 902ad05569e551243b9a9c36c73aa634, type: 3}
+  bloodSprayPrefabs:
+  - {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
+  - {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
+  - {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
+  bloodPoolPrefabs:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  bloodSpawnPoint: {fileID: 0}
+  bloodScale: {x: 0.2, y: 0.2, z: 0.2}
+  deathSound: {fileID: 8300000, guid: 902ad05569e551243b9a9c36c73aa634, type: 3}
 --- !u!114 &6678394985142216600
 MonoBehaviour:
   m_ObjectHideFlags: 0

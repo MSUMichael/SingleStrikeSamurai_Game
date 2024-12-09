@@ -2,43 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
+//Written entirely by Michael Anglemier
+//For some reason this code works great with the archer enemies, not so well with the others, unsure why.
 
 public class CombatMusicPlayer : MonoBehaviour
 {
-    //public AudioClip passiveSound;
+    private bool enemyNear = false;
+    private bool isPlaying = false;
+
     public AudioClip combatSound;
     public AudioSource audioSource;
 
-    void Start()
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
 
-        //audioSource.clip = passiveSound;
-        //audioSource.loop = true;
-        //audioSource.Play();
+        audioSource.clip = combatSound;
+        audioSource.volume = 1.0f;
+        audioSource.loop = true;
     }
 
-
-    void Update()
-    {
-
-    }
-
-    //Playing
+    
 
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("EnemyHurtbox"))
+        if (other.CompareTag("EnemyHurtbox") && isPlaying==false)
         {
-            audioSource.clip = combatSound;
-            audioSource.loop = true;
+            audioSource.volume = 1.0f;
             audioSource.Play();
-
-        }
-        else
-        {
-
+            isPlaying = true;
         }
     }
 
@@ -48,21 +41,21 @@ public class CombatMusicPlayer : MonoBehaviour
 
         if (other.CompareTag("EnemyHurtbox"))
         {
-
+            enemyNear = true;
+        }
+        else
+        {
+            enemyNear = false;
         }
 
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("EnemyHurtbox"))
+        if (other.CompareTag("EnemyHurtbox") && enemyNear==false)
         {
             StartCoroutine(FadeAudioSource.StartFade(audioSource, 2.0f, 0));
-
-
-            //audioSource.clip = passiveSound;
-            //audioSource.loop = true;
-            //audioSource.Play();
+            isPlaying = false;
         }
 
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-//Written by ryan reisdorf
+//Written by ryan reisdorf, contributed to by Michael Anglemier
 
 public class BossHealth : MonoBehaviour
 {
@@ -105,7 +105,7 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-    public void BossBloodSpray()
+    public void BossBloodSpray() //Ryan & Michael
     {
 
         rndSprayRot = 0;//Random.Range(0, 359);
@@ -137,7 +137,7 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-    public void BossBloodPool()
+    public void BossBloodPool() //Ryan & Michael
     {
 
         rndPoolRot = Random.Range(0, 359);
@@ -165,7 +165,7 @@ public class BossHealth : MonoBehaviour
 
         if (bloodPoolPrefab != null)
         {
-            GameObject poolInstance = Instantiate(bloodPoolPrefab, transform.position, Quaternion.Euler(new Vector3(0, rndPoolRot, 0)));
+            GameObject poolInstance = Instantiate(bloodPoolPrefab, transform.position + new Vector3(0.0f,0.05f,0.0f), Quaternion.Euler(new Vector3(0, rndPoolRot, 0)));
             poolInstance.transform.localScale = bloodScale*2;
             Debug.Log("Blood pool created.");
         }

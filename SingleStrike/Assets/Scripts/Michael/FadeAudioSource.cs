@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Written by Michael Anglemier though the actual code was just pulled from the internet
 public static class FadeAudioSource
 {
     public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)

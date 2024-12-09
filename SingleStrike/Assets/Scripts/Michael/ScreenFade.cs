@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+//Written entirely by Michael Anglemier
 
 public class ScreenFade : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class ScreenFade : MonoBehaviour
     private TextMeshProUGUI fade; //"fade" should be name of visual
     private float alphaRemaining = 1.0f;
     private float fadeRate = 0.012f;
-    //private bool cycleFlag = false;
 
     private GameObject player;
     private Vector3 PlayerCoords;
@@ -22,34 +22,24 @@ public class ScreenFade : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    void FixedUpdate() //Fades screen dependant on player location
     {
 
         PlayerCoords = player.transform.position;
 
-        if (alphaRemaining <= 1.0f &&    PlayerCoords.x >= 835)
+        if (alphaRemaining <= 1.0f && PlayerCoords.x >= 835)
         {
             alphaRemaining += fadeRate;
-            //cycleFlag = false;
         }
 
-        if (alphaRemaining >= 0.98f &&    PlayerCoords.x <= 835)
+        if (alphaRemaining >= 0.98f && PlayerCoords.x <= 835)
         {
             alphaRemaining -= fadeRate / 15;
-            //cycleFlag = false;
         }
 
-        else if (alphaRemaining >= 0.0f &&    PlayerCoords.x <= 835)
+        else if (alphaRemaining >= 0.0f && PlayerCoords.x <= 835)
         {
             alphaRemaining -= fadeRate;
-            //cycleFlag = false;
         }
 
 

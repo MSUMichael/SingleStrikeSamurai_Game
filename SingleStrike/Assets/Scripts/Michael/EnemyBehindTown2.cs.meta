@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 67acd873e2fabed449813a3786d2dbba
+guid: 22a14d4f2d1e4f44ea5f4986480401c1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - combatSound: {fileID: 8300000, guid: c6a6bcbe219ceb04f981fc11162e63e5, type: 3}
-  - audioSource: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

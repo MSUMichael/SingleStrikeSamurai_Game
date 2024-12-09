@@ -3,7 +3,17 @@ guid: 88638d04a7ef3244d904e41dbeed248a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - bossDeathSound: {instanceID: 0}
+  - bloodSprayPrefab0: {fileID: 100000, guid: f48934db5275211479f948c0b0b66fa8, type: 3}
+  - bloodSprayPrefab1: {fileID: 100000, guid: 45f7f4ba320afce44af1292899600721, type: 3}
+  - bloodSprayPrefab2: {fileID: 100000, guid: 64ef20394901f4e498b3fdaf0bac5957, type: 3}
+  - bloodPoolPrefab0: {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - bloodPoolPrefab1: {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - bloodPoolPrefab2: {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - bloodPoolPrefab3: {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - bloodSpawnPoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

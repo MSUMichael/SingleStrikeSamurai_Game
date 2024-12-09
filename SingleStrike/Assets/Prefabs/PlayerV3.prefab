@@ -1825,15 +1825,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.7
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fa92bcbe8658a884a9c88a8e1ded4651, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406352b52006d41499afba903440edec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 6
   jumpForce: 20
   crouchSpeed: 3
   playerAnim: {fileID: 7353247554827904424}
@@ -2021,7 +2021,7 @@ MonoBehaviour:
   hasRotatedLeft: 0
   hasRotatedRight: 1
   animController: {fileID: 7987358410978688211}
-  sprintSpeed: 10
+  sprintSpeed: 12
 --- !u!114 &1817515845134239093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,7 +2061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a92086d16d856a49a5fc1800679a27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   animator: {fileID: 7353247554827904424}
 --- !u!114 &4296146051997750341
 MonoBehaviour:
@@ -2077,8 +2077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBlocking: 0
   animator: {fileID: 7353247554827904424}
-  blockCooldown: 1
-  blockDuration: 0.3
+  blockCooldown: 0.2
+  blockDuration: 0.4
   sparkEmitter: {fileID: 7729406508345512914}
   sparkPrefab: {fileID: 2407157146058976812, guid: 3e65f6db24a00e343997aa99337aa375, type: 3}
 --- !u!114 &7987358410978688211
