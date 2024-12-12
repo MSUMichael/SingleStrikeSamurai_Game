@@ -1,3 +1,5 @@
+//Written by Viacheslav Sotov
+
 using UnityEngine;
 
 public class EnemyV4AnimCtrr : MonoBehaviour

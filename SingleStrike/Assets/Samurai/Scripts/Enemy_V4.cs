@@ -1,3 +1,4 @@
+// Written by Viacheslav Sotov
 using UnityEngine;
 using System.Collections;
 
@@ -28,7 +29,7 @@ public class Enemy_V4 : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return; // Prevent any action if the enemy is dead
+        if (isDead) return; 
 
         DetectPlayer();
         if (playerInRange)
@@ -72,7 +73,7 @@ public class Enemy_V4 : MonoBehaviour
             if (!playerInAttackRange)
             {
                 playerInAttackRange = true;
-                rb.velocity = Vector3.zero; // Stop movement while attacking
+                rb.velocity = Vector3.zero; 
                 StartCoroutine(AttackPlayerRepeatedly());
             }
         }
@@ -80,7 +81,7 @@ public class Enemy_V4 : MonoBehaviour
         {
             playerInAttackRange = false;
             StopCoroutine(AttackPlayerRepeatedly()); // Stop attacking when player moves away
-            animator.SetBool("IsWalking", true); // Resume walking if needed
+            animator.SetBool("IsWalking", true); 
         }
     }
 
@@ -127,31 +128,31 @@ public class Enemy_V4 : MonoBehaviour
     void Idle()
     {
         rb.velocity = Vector3.zero;
-        animator.SetBool("IsWalking", false); // Set animation to idle
+        animator.SetBool("IsWalking", false); 
     }
 
     public void Die()
     {
-        if (isDead) return; // Prevent multiple death calls
+        if (isDead) return; 
 
         isDead = true;
-        rb.velocity = Vector3.zero; // Stop all movement
+        rb.velocity = Vector3.zero; 
         animator.SetTrigger("Die");
 
-        // Play death sound if available
+        
         if (audioSource != null && deathSound != null)
         {
             audioSource.clip = deathSound;
             audioSource.Play();
         }
 
-        // Disable enemy components after a short delay
+        
         StartCoroutine(HandleDeath());
     }
 
     IEnumerator HandleDeath()
     {
         yield return new WaitForSeconds(2f); // Wait for death animation and/or sound
-        Destroy(gameObject); // Remove the enemy from the scene
+        Destroy(gameObject); 
     }
 }
